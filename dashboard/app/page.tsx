@@ -46,8 +46,9 @@ const config = [
 ];
 
 const links = [
-  { label: "Atendimento", url: "https://wmm.chatatender.ia.br", icon: "🎧" },
+  { label: "Atendimento", url: "https://atendimento-web.vercel.app", icon: "🎧" },
   { label: "Login Atend.", url: "https://wmm.chatatender.ia.br/login", icon: "🔑" },
+  { label: "ChatAtender", url: "https://chatatender.vercel.app/login", icon: "💼" },
   { label: "Chatwoot", url: "https://painel.chatatender.ia.br", icon: "💬" },
   { label: "n8n Automações", url: "https://webhook.chatatender.ia.br/login", icon: "⚙️" },
   { label: "Portainer", url: "https://portainer.chatatender.ia.br", icon: "🐳" },
