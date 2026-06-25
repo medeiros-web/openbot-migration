@@ -78,6 +78,7 @@ const links = [
   { label: "Sonic Bloom", url: "https://sonic-bloom-vault.vercel.app", icon: "🎵" },
   { label: "Processos", url: "https://processo-demanda.vercel.app", icon: "⚖️" },
   { label: "Doc Archive", url: "https://digital-document-archive-q22v.vercel.app", icon: "📁" },
+  { label: "Plataforma Jurídica", url: "https://legal-ai-assistant-one.vercel.app/", icon: "⚖️" },
   { label: "Chatwoot", url: "https://painel.chatatender.ia.br", icon: "💬" },
   { label: "n8n Automações", url: "https://webhook.chatatender.ia.br/login", icon: "⚙️" },
   { label: "Portainer", url: "https://portainer.chatatender.ia.br", icon: "🐳" },
