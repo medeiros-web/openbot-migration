@@ -1,0 +1,325 @@
+﻿{
+  "name": "OpenBot — IA Jurídica Principal (GROK)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "openbot-ia",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-001",
+      "name": "Webhook Chatwoot",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [200, 400],
+      "webhookId": "openbot-ia-principal"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\"status\": \"ok\"}",
+        "options": {}
+      },
+      "id": "resp-001",
+      "name": "Responder 200 OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [420, 220]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Filtrar apenas mensagens recebidas de usuários\nconst body = $input.first().json.body || $input.first().json;\n\n// Validar evento e tipo\nif (body.event !== 'message_created') return [];\nif (body.message_type !== 'incoming') return [];\nif (body.content_type === 'activity') return [];\nif (!body.content || body.content.trim() === '') return [];\n\nconst conversationId = body.conversation?.id;\nconst contactName = body.meta?.sender?.name || 'Cliente';\nconst contactPhone = body.meta?.sender?.phone_number || '';\nconst messageContent = body.content.trim();\nconst inboxId = body.inbox_id;\nconst contactId = body.meta?.sender?.id;\n\nif (!conversationId) return [];\n\nreturn [{\n  json: {\n    conversationId,\n    contactName,\n    contactPhone,\n    messageContent,\n    inboxId,\n    contactId\n  }\n}];"
+      },
+      "id": "code-001",
+      "name": "Filtrar Mensagem",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [420, 400]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Verificar horário de funcionamento (Brasília UTC-3)\n// Seg-Sex: 09:00-11:00 e 14:00-16:00\nconst moment = require('moment');\nconst d = $input.first().json;\n\nconst now = moment().utcOffset(-3);\nconst dow = now.day(); // 0=Dom, 6=Sab\nconst t = now.format('HH:mm');\n\nconst diasAtivos = [1, 2, 3, 4, 5]; // Seg a Sex\nconst isDiaAtivo = diasAtivos.includes(dow);\n\nconst manha = t >= '09:00' && t <= '11:00';\nconst tarde = t >= '14:00' && t <= '16:00';\nconst emHorario = isDiaAtivo && (manha || tarde);\n\nreturn [{\n  json: {\n    ...d,\n    emHorario,\n    horaAtual: t,\n    diaAtual: dow\n  }\n}];"
+      },
+      "id": "code-002",
+      "name": "Verificar Horário",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [640, 400]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "cond-hours",
+              "leftValue": "={{ $json.emHorario }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "if-001",
+      "name": "Dentro do Horário?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [860, 400]
+    },
+    {
+      "parameters": {
+        "amount": 10,
+        "unit": "seconds"
+      },
+      "id": "wait-001",
+      "name": "Aguardar 10s",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [1080, 300],
+      "webhookId": "wait-resp-001"
+    },
+    {
+      "parameters": {
+        "url": "=https://painel.chatatender.ia.br/api/v1/accounts/1/conversations/{{ $json.conversationId }}/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "CHATWOOT_API_TOKEN"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "http-001",
+      "name": "Buscar Histórico Chatwoot",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1300, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Montar histórico de mensagens (últimas 10)\nconst histData = $input.first().json;\nconst conv = $('Verificar Horário').first().json;\n\nconst allMsgs = histData.payload || [];\n\n// Filtrar e converter para formato OpenAI/GROK\nconst lastMsgs = allMsgs\n  .filter(m => m.content && m.content.trim() !== '' && m.message_type !== undefined)\n  .slice(-10)\n  .map(m => ({\n    role: m.message_type === 0 ? 'user' : 'assistant',\n    content: m.content.trim()\n  }));\n\n// Garantir que a mensagem atual está incluída\nconst lastMsg = lastMsgs[lastMsgs.length - 1];\nif (!lastMsg || lastMsg.content !== conv.messageContent) {\n  lastMsgs.push({ role: 'user', content: conv.messageContent });\n}\n\nreturn [{\n  json: {\n    ...conv,\n    messageHistory: lastMsgs\n  }\n}];"
+      },
+      "id": "code-003",
+      "name": "Montar Histórico",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1520, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Construir payload completo para GROK via OpenRouter\nconst d = $input.first().json;\n\nconst systemPrompt = `Atendimento Jurídico Humanizado + Agendamento Inteligente\n📌 IDENTIDADE DO AGENTE\nVocê é uma Inteligência Artificial especializada em atendimento jurídico humanizado, atuando como assistente virtual da Medeiros Assessoria Jurídica.\n\nSeu objetivo é:\n- Realizar atendimento inicial acolhedor\n- Coletar dados essenciais do cliente\n- Agendar consultas jurídicas de forma organizada e eficiente\n- Utilizar integração com Google Calendar para evitar conflitos de horário\n- Garantir excelente experiência do cliente, com comunicação clara, ética e profissional\n\n⚙️ REGRAS DE COMPORTAMENTO\n- Seja sempre educado, empático, profissional e claro\n- Utilize linguagem acessível, sem juridiquês excessivo\n- Nunca prometa resultados jurídicos\n- Confirme todas as informações antes de finalizar o agendamento\n- Sempre verifique a disponibilidade no Google Calendar antes de confirmar\n- Informe que o link da reunião (Google Meet) será enviado pouco antes do horário agendado\n\n🔹 FLUXO DE ATENDIMENTO OBRIGATÓRIO\n1️⃣ SAUDAÇÃO INICIAL\nInicie sempre com:\n\"Olá! Seja muito bem-vindo(a) 👋\\nSou a Assistente Virtual da Medeiros Assessoria Jurídica.\\nSerá um prazer ajudar você a agendar uma consulta com um de nossos Advogados Especialistas.\"\n\nEm seguida, solicite: Nome completo, E-mail, Telefone/WhatsApp, Breve descrição do caso.\n\n2️⃣ CONFIRMAÇÃO DOS DADOS\nRepita os dados recebidos e pergunte se estão corretos.\n\n3️⃣ AGENDAMENTO FLEXÍVEL\nHorários disponíveis:\n- Segunda-feira: 09h | 11h | 14h | 16h\n- Terça-feira: 10h | 13h | 15h | 17h\n- Quarta-feira: 09h | 12h | 14h | 16h\n- Quinta-feira: 09h | 11h | 15h | 17h\n- Sexta-feira: 10h | 12h | 14h | 16h\n\nQuando o cliente escolher: responda EXATAMENTE com o formato:\n[AGENDAR] nome=NOME|email=EMAIL|data=YYYY-MM-DD|hora=HH:MM|descricao=DESCRICAO\n(Esta linha será processada automaticamente — não exiba para o cliente)\n\nApós essa linha, envie a mensagem de confirmação normal para o cliente.\n\n4️⃣ CONFIRMAÇÃO FINAL\nApós confirmar: \"✅ Agendamento confirmado!\\nData: [data]\\nHorário: [hora]\\nModalidade: Google Meet\\nO link será enviado por e-mail/WhatsApp antes da reunião.\"\n\n5️⃣ ENCERRAMENTO\n\"Se precisar alterar ou cancelar, é só me avisar.\\nEstamos à disposição! 😊\"\n\n🔹 PRINCÍPIO GERAL\nVocê não é advogado. Seu papel é atendimento inicial e agendamento.\n\n🔹 REGRAS ABSOLUTAS\n- Nunca inventar jurisprudência, súmulas ou precedentes\n- Nunca afirmar que há \"ganho de causa\" ou \"direito garantido\"\n- Nunca emitir parecer jurídico ou estratégia processual\n\n🔹 FRASES PROIBIDAS\n❌ \"Você tem direito garantido\"\n❌ \"O STF já decidiu que…\"\n❌ \"A jurisprudência é pacífica\"\n❌ \"Você certamente ganhará\"\n\n🔹 FRASES PERMITIDAS\n✔️ \"Depende da análise do caso concreto\"\n✔️ \"Em linhas gerais\"\n✔️ \"É necessária avaliação jurídica individual\"`;\n\nconst messages = [\n  { role: 'system', content: systemPrompt },\n  ...d.messageHistory\n];\n\nreturn [{\n  json: {\n    ...d,\n    grokPayload: {\n      model: 'x-ai/grok-2-latest',\n      messages,\n      max_tokens: 1000,\n      temperature: 0.7\n    }\n  }\n}];"
+      },
+      "id": "code-004",
+      "name": "Montar Prompt GROK",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1740, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "method": "POST",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer OPENROUTER_API_KEY"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "HTTP-Referer",
+              "value": "https://chatatender.ia.br"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.grokPayload) }}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "http-002",
+      "name": "Chamar GROK API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1960, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Processar resposta do GROK e detectar intenção de agendamento\nconst grokResp = $input.first().json;\nconst conv = $('Montar Prompt GROK').first().json;\n\nconst aiText = grokResp.choices?.[0]?.message?.content || 'Desculpe, não consegui processar sua mensagem. Tente novamente.';\n\n// Detectar intenção de agendamento no formato [AGENDAR]\nconst agendamentoMatch = aiText.match(/\\[AGENDAR\\]\\s*nome=([^|]+)\\|email=([^|]+)\\|data=([^|]+)\\|hora=([^|]+)\\|descricao=([^\\n]+)/i);\n\nlet agendamento = null;\nlet textoLimpo = aiText;\n\nif (agendamentoMatch) {\n  agendamento = {\n    nome: agendamentoMatch[1].trim(),\n    email: agendamentoMatch[2].trim(),\n    data: agendamentoMatch[3].trim(),\n    hora: agendamentoMatch[4].trim(),\n    descricao: agendamentoMatch[5].trim()\n  };\n  // Remover a linha [AGENDAR] do texto que será enviado ao cliente\n  textoLimpo = aiText.replace(/\\[AGENDAR\\][^\\n]+\\n?/i, '').trim();\n}\n\nreturn [{\n  json: {\n    ...conv,\n    aiResponse: textoLimpo,\n    temAgendamento: !!agendamento,\n    agendamento\n  }\n}];"
+      },
+      "id": "code-005",
+      "name": "Processar Resposta GROK",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2180, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "cond-sched",
+              "leftValue": "={{ $json.temAgendamento }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "if-002",
+      "name": "Tem Agendamento?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [2400, 300]
+    },
+    {
+      "parameters": {
+        "url": "=https://painel.chatatender.ia.br/api/v1/accounts/1/conversations/{{ $json.conversationId }}/messages",
+        "method": "POST",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "CHATWOOT_API_TOKEN"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={ \"content\": {{ JSON.stringify($json.aiResponse) }}, \"message_type\": \"outgoing\", \"private\": false }",
+        "options": {}
+      },
+      "id": "http-003",
+      "name": "Enviar Resposta Normal",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2620, 200]
+    },
+    {
+      "parameters": {
+        "url": "=https://webhook.chatatender.ia.br/openbot-agendamento",
+        "method": "POST",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "http-004",
+      "name": "Acionar Workflow Agendamento",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2620, 400]
+    }
+  ],
+  "connections": {
+    "Webhook Chatwoot": {
+      "main": [
+        [
+          { "node": "Responder 200 OK", "type": "main", "index": 0 },
+          { "node": "Filtrar Mensagem", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Filtrar Mensagem": {
+      "main": [
+        [{ "node": "Verificar Horário", "type": "main", "index": 0 }]
+      ]
+    },
+    "Verificar Horário": {
+      "main": [
+        [{ "node": "Dentro do Horário?", "type": "main", "index": 0 }]
+      ]
+    },
+    "Dentro do Horário?": {
+      "main": [
+        [{ "node": "Aguardar 10s", "type": "main", "index": 0 }],
+        []
+      ]
+    },
+    "Aguardar 10s": {
+      "main": [
+        [{ "node": "Buscar Histórico Chatwoot", "type": "main", "index": 0 }]
+      ]
+    },
+    "Buscar Histórico Chatwoot": {
+      "main": [
+        [{ "node": "Montar Histórico", "type": "main", "index": 0 }]
+      ]
+    },
+    "Montar Histórico": {
+      "main": [
+        [{ "node": "Montar Prompt GROK", "type": "main", "index": 0 }]
+      ]
+    },
+    "Montar Prompt GROK": {
+      "main": [
+        [{ "node": "Chamar GROK API", "type": "main", "index": 0 }]
+      ]
+    },
+    "Chamar GROK API": {
+      "main": [
+        [{ "node": "Processar Resposta GROK", "type": "main", "index": 0 }]
+      ]
+    },
+    "Processar Resposta GROK": {
+      "main": [
+        [{ "node": "Tem Agendamento?", "type": "main", "index": 0 }]
+      ]
+    },
+    "Tem Agendamento?": {
+      "main": [
+        [{ "node": "Acionar Workflow Agendamento", "type": "main", "index": 0 }],
+        [{ "node": "Enviar Resposta Normal", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": ""
+  },
+  "staticData": null
+}
+

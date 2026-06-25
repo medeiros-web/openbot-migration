@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  openbot-token-refresh:
+    image: node:20-alpine
+    container_name: openbot-token-refresh
+    restart: always
+    working_dir: /app
+    volumes:
+      - ./token-refresh:/app:ro
+    command: node index.js
+    environment:
+      - NODE_ENV=production
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+    networks:
+      - minha_rede
+    labels:
+      - "traefik.enable=false"
+
+networks:
+  minha_rede:
+    external: true

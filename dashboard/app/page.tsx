@@ -1,0 +1,146 @@
+export const revalidate = 0;
+
+const workflows = [
+  {
+    id: "rGrlPwGxJVkWIQ1r",
+    name: "IA Jurídica Principal",
+    desc: "Recebe mensagens do Chatwoot, verifica horário, busca histórico e responde via GROK.",
+    icon: "⚖️",
+    tag: "GROK + Histórico",
+    tagType: "success",
+    webhook: "webhook.chatatender.ia.br/openbot-ia",
+  },
+  {
+    id: "YZs1k1nQC4mjEgD7",
+    name: "Agendamento Google Calendar",
+    desc: "Verifica disponibilidade no Google Calendar, cria eventos com Google Meet e envia confirmação.",
+    icon: "📅",
+    tag: "Google Meet",
+    tagType: "warning",
+    webhook: "webhook.chatatender.ia.br/openbot-agendamento",
+  },
+  {
+    id: "aiDdNEU7UK6gkkz9",
+    name: "Follow-up Automático",
+    desc: "Verifica conversas inativas há 24h e envia mensagem personalizada gerada por IA.",
+    icon: "🔁",
+    tag: "Cron · a cada hora",
+    tagType: "",
+    webhook: "cron",
+  },
+];
+
+const config = [
+  ["Modelo IA", "x-ai/grok-2-latest (via OpenRouter)"],
+  ["Temperatura", "0.7"],
+  ["Máx. tokens", "1.000"],
+  ["Histórico de msgs", "10 mensagens"],
+  ["Delay de resposta", "10 segundos"],
+  ["Horário de atend.", "Seg–Sex: 09:00–11:00 e 14:00–16:00 (Brasília)"],
+  ["Duração da consulta", "1 hora"],
+  ["Google Meet", "Habilitado"],
+  ["Follow-up inatividade", "24 horas"],
+  ["Contas Google", "medeirosassessor.adv@gmail.com"],
+  ["Webhook Chatwoot ID", "#7 — OpenBot IA Juridica (GROK)"],
+  ["Versão backup OpenBot", "6.0.5"],
+];
+
+const links = [
+  { label: "Chatwoot", url: "https://painel.chatatender.ia.br", icon: "💬" },
+  { label: "n8n Workflows", url: "https://auto.chatatender.ia.br", icon: "⚙️" },
+  { label: "Portainer", url: "https://portainer.chatatender.ia.br", icon: "🐳" },
+  { label: "Krayin CRM", url: "https://crm.chatatender.ia.br", icon: "👥" },
+];
+
+export default function Home() {
+  return (
+    <>
+      <header>
+        <div className="container header-inner">
+          <div className="logo">
+            <span className="logo-badge">MA</span>
+            Medeiros Assessoria Jurídica
+          </div>
+          <span className="status-badge active">
+            <span className="dot" />
+            Assistente Ativo
+          </span>
+        </div>
+      </header>
+
+      <main>
+        <section className="hero">
+          <div className="container">
+            <h1>Painel da IA Jurídica</h1>
+            <p>Migração OpenBot → n8n + Chatwoot · 3 workflows ativos</p>
+          </div>
+        </section>
+
+        <div className="container">
+          <p className="section-title">Workflows n8n</p>
+          <div className="grid">
+            {workflows.map((wf) => (
+              <div className="card" key={wf.id}>
+                <div className="card-icon">{wf.icon}</div>
+                <h3>{wf.name}</h3>
+                <p>{wf.desc}</p>
+                <div className="card-footer">
+                  <span className={`tag ${wf.tagType}`}>{wf.tag}</span>
+                  <span className="status-badge active">
+                    <span className="dot" />
+                    Ativo
+                  </span>
+                </div>
+                {wf.webhook !== "cron" && (
+                  <p style={{ fontSize: 12, color: "var(--muted)", marginTop: 12, fontFamily: "monospace" }}>
+                    {wf.webhook}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <p className="section-title">Configuração</p>
+          <div className="config-table">
+            {config.map(([key, val]) => (
+              <div className="config-row" key={key}>
+                <span className="config-key">{key}</span>
+                <span className="config-val">{val}</span>
+              </div>
+            ))}
+          </div>
+
+          <p className="section-title">Acesso Rápido</p>
+          <div className="grid" style={{ marginBottom: 40 }}>
+            {links.map((l) => (
+              <a className="card" href={l.url} target="_blank" rel="noreferrer" key={l.url}>
+                <div className="card-icon">{l.icon}</div>
+                <h3>{l.label}</h3>
+                <p style={{ fontSize: 13 }}>{l.url.replace("https://", "")}</p>
+              </a>
+            ))}
+          </div>
+
+          <section className="cta-section">
+            <h2>Precisa de ajuda?</h2>
+            <p>Acesse o Chatwoot para gerenciar conversas ou o n8n para editar workflows.</p>
+            <div className="btn-group">
+              <a className="btn btn-primary" href="https://painel.chatatender.ia.br" target="_blank">
+                💬 Abrir Chatwoot
+              </a>
+              <a className="btn btn-ghost" href="https://auto.chatatender.ia.br" target="_blank">
+                ⚙️ Editar Workflows
+              </a>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer>
+        <div className="container">
+          Medeiros Assessoria Jurídica · Assistente Virtual · {new Date().getFullYear()}
+        </div>
+      </footer>
+    </>
+  );
+}

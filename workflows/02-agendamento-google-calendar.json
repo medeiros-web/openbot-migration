@@ -1,0 +1,250 @@
+﻿{
+  "name": "OpenBot — Agendamento Google Calendar",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "openbot-agendamento",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-002",
+      "name": "Webhook Agendamento",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [200, 400],
+      "webhookId": "openbot-agendamento-webhook"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\"status\": \"agendamento recebido\"}",
+        "options": {}
+      },
+      "id": "resp-002",
+      "name": "Responder 200 OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [420, 220]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Montar datas para verificação no Google Calendar\nconst d = $input.first().json.body || $input.first().json;\nconst ag = d.agendamento;\n\nif (!ag || !ag.data || !ag.hora) {\n  return [{ json: { erro: 'Dados de agendamento incompletos', ...d } }];\n}\n\n// Construir ISO datetime (Brasília UTC-3)\nconst [year, month, day] = ag.data.split('-').map(Number);\nconst [hour, minute] = ag.hora.split(':').map(Number);\n\n// Início do evento em UTC (Brasília = UTC-3)\nconst startUTC = new Date(Date.UTC(year, month - 1, day, hour + 3, minute));\nconst endUTC = new Date(startUTC.getTime() + 60 * 60 * 1000); // +1 hora\n\nconst startISO = startUTC.toISOString().replace('.000Z', '-03:00').replace('Z', '');\nconst endISO = endUTC.toISOString().replace('.000Z', '-03:00').replace('Z', '');\n\n// Para buscar eventos do dia (range de 24h)\nconst dayStartISO = new Date(Date.UTC(year, month - 1, day, 3, 0)).toISOString();\nconst dayEndISO = new Date(Date.UTC(year, month - 1, day, 27, 0)).toISOString();\n\nreturn [{\n  json: {\n    ...d,\n    startDateTime: startISO,\n    endDateTime: endISO,\n    dayStartISO,\n    dayEndISO,\n    dataFormatada: `${String(day).padStart(2,'0')}/${String(month).padStart(2,'0')}/${year}`,\n    horaFormatada: `${String(hour).padStart(2,'0')}:${String(minute).padStart(2,'0')}`\n  }\n}];"
+      },
+      "id": "code-006",
+      "name": "Preparar Datas",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [420, 400]
+    },
+    {
+      "parameters": {
+        "url": "=https://www.googleapis.com/calendar/v3/calendars/primary/events?timeMin={{ $json.dayStartISO }}&timeMax={{ $json.dayEndISO }}&singleEvents=true&orderBy=startTime",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.agendamento ? 'GOOGLE_ACCESS_TOKEN' : '' }}"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "http-005",
+      "name": "Verificar Disponibilidade Calendar",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [640, 400]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Verificar se o horário está disponível\nconst calResp = $input.first().json;\nconst conv = $('Preparar Datas').first().json;\n\nconst existingEvents = calResp.items || [];\nconst requestedStart = new Date(conv.startDateTime).getTime();\nconst requestedEnd = new Date(conv.endDateTime).getTime();\n\n// Verificar conflito com eventos existentes\nconst temConflito = existingEvents.some(ev => {\n  const evStart = new Date(ev.start?.dateTime || ev.start?.date).getTime();\n  const evEnd = new Date(ev.end?.dateTime || ev.end?.date).getTime();\n  return evStart < requestedEnd && evEnd > requestedStart;\n});\n\nreturn [{\n  json: {\n    ...conv,\n    horarioDisponivel: !temConflito,\n    eventosExistentes: existingEvents.length\n  }\n}];"
+      },
+      "id": "code-007",
+      "name": "Verificar Disponibilidade",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [860, 400]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "cond-avail",
+              "leftValue": "={{ $json.horarioDisponivel }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "if-003",
+      "name": "Horário Disponível?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1080, 400]
+    },
+    {
+      "parameters": {
+        "url": "https://www.googleapis.com/calendar/v3/calendars/primary/events?conferenceDataVersion=1",
+        "method": "POST",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer GOOGLE_ACCESS_TOKEN"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"summary\": \"Consulta Jurídica — {{ $json.agendamento.nome }}\",\n  \"description\": \"Cliente: {{ $json.agendamento.nome }}\\nE-mail: {{ $json.agendamento.email }}\\nCaso: {{ $json.agendamento.descricao }}\",\n  \"start\": {\n    \"dateTime\": \"{{ $json.startDateTime }}\",\n    \"timeZone\": \"America/Maceio\"\n  },\n  \"end\": {\n    \"dateTime\": \"{{ $json.endDateTime }}\",\n    \"timeZone\": \"America/Maceio\"\n  },\n  \"attendees\": [\n    {\"email\": \"{{ $json.agendamento.email }}\", \"displayName\": \"{{ $json.agendamento.nome }}\"}\n  ],\n  \"conferenceData\": {\n    \"createRequest\": {\n      \"requestId\": \"openbot-{{ $json.conversationId }}\",\n      \"conferenceSolutionKey\": {\"type\": \"hangoutsMeet\"}\n    }\n  },\n  \"reminders\": {\n    \"useDefault\": false,\n    \"overrides\": [\n      {\"method\": \"email\", \"minutes\": 60},\n      {\"method\": \"popup\", \"minutes\": 30}\n    ]\n  }\n}",
+        "options": {}
+      },
+      "id": "http-006",
+      "name": "Criar Evento Google Calendar",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1300, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Montar mensagem de confirmação com link do Meet\nconst eventData = $input.first().json;\nconst conv = $('Verificar Disponibilidade').first().json;\n\nconst meetLink = eventData.conferenceData?.entryPoints?.find(ep => ep.entryPointType === 'video')?.uri || '';\nconst ag = conv.agendamento;\n\nconst mensagem = `✅ Agendamento confirmado com sucesso!\n\n📅 Data: ${conv.dataFormatada}\n⏰ Horário: ${conv.horaFormatada}\n👤 Nome: ${ag.nome}\n📧 E-mail: ${ag.email}\n⚖️ Assunto: ${ag.descricao}\n\n📹 Modalidade: Google Meet\n${meetLink ? `🔗 Link: ${meetLink}` : '🔗 O link será enviado por e-mail em breve.'}\n\nSe precisar alterar ou cancelar, é só me avisar. 😊`;\n\nreturn [{\n  json: {\n    ...conv,\n    meetLink,\n    eventoId: eventData.id,\n    mensagemConfirmacao: mensagem\n  }\n}];"
+      },
+      "id": "code-008",
+      "name": "Montar Confirmação",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1520, 300]
+    },
+    {
+      "parameters": {
+        "url": "=https://painel.chatatender.ia.br/api/v1/accounts/1/conversations/{{ $json.conversationId }}/messages",
+        "method": "POST",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "CHATWOOT_API_TOKEN"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={ \"content\": {{ JSON.stringify($json.mensagemConfirmacao) }}, \"message_type\": \"outgoing\", \"private\": false }",
+        "options": {}
+      },
+      "id": "http-007",
+      "name": "Enviar Confirmação",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1740, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Horário indisponível — oferecer alternativas\nconst d = $input.first().json;\nconst ag = d.agendamento;\n\nconst mensagem = `Olá, ${ag.nome}! 😊\n\nInfelizmente o horário escolhido (${d.dataFormatada} às ${d.horaFormatada}) já está ocupado.\n\nPosso sugerir algumas alternativas próximas:\n\n📅 Horários disponíveis:\n- Segunda-feira: 09h | 11h | 14h | 16h\n- Terça-feira: 10h | 13h | 15h | 17h\n- Quarta-feira: 09h | 12h | 14h | 16h\n- Quinta-feira: 09h | 11h | 15h | 17h\n- Sexta-feira: 10h | 12h | 14h | 16h\n\nQual opção é melhor para você?`;\n\nreturn [{\n  json: {\n    ...d,\n    mensagemAlternativa: mensagem\n  }\n}];"
+      },
+      "id": "code-009",
+      "name": "Montar Alternativas",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1300, 500]
+    },
+    {
+      "parameters": {
+        "url": "=https://painel.chatatender.ia.br/api/v1/accounts/1/conversations/{{ $json.conversationId }}/messages",
+        "method": "POST",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "CHATWOOT_API_TOKEN"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={ \"content\": {{ JSON.stringify($json.mensagemAlternativa) }}, \"message_type\": \"outgoing\", \"private\": false }",
+        "options": {}
+      },
+      "id": "http-008",
+      "name": "Enviar Alternativas",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1520, 500]
+    }
+  ],
+  "connections": {
+    "Webhook Agendamento": {
+      "main": [
+        [
+          { "node": "Responder 200 OK", "type": "main", "index": 0 },
+          { "node": "Preparar Datas", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Preparar Datas": {
+      "main": [
+        [{ "node": "Verificar Disponibilidade Calendar", "type": "main", "index": 0 }]
+      ]
+    },
+    "Verificar Disponibilidade Calendar": {
+      "main": [
+        [{ "node": "Verificar Disponibilidade", "type": "main", "index": 0 }]
+      ]
+    },
+    "Verificar Disponibilidade": {
+      "main": [
+        [{ "node": "Horário Disponível?", "type": "main", "index": 0 }]
+      ]
+    },
+    "Horário Disponível?": {
+      "main": [
+        [{ "node": "Criar Evento Google Calendar", "type": "main", "index": 0 }],
+        [{ "node": "Montar Alternativas", "type": "main", "index": 0 }]
+      ]
+    },
+    "Criar Evento Google Calendar": {
+      "main": [
+        [{ "node": "Montar Confirmação", "type": "main", "index": 0 }]
+      ]
+    },
+    "Montar Confirmação": {
+      "main": [
+        [{ "node": "Enviar Confirmação", "type": "main", "index": 0 }]
+      ]
+    },
+    "Montar Alternativas": {
+      "main": [
+        [{ "node": "Enviar Alternativas", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+  "staticData": null
+}
+

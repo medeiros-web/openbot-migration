@@ -1,0 +1,164 @@
+﻿{
+  "name": "OpenBot — Follow-up Automático (24h)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 * * * *"
+            }
+          ]
+        }
+      },
+      "id": "cron-001",
+      "name": "Verificar a Cada Hora",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [200, 400]
+    },
+    {
+      "parameters": {
+        "url": "https://painel.chatatender.ia.br/api/v1/accounts/1/conversations?status=open&page=1",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "CHATWOOT_API_TOKEN"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "http-009",
+      "name": "Buscar Conversas Abertas",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [420, 400]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Filtrar conversas inativas há 24 horas (1440 minutos)\nconst data = $input.first().json;\nconst conversations = data.data?.payload || [];\nconst HORAS_INATIVIDADE = 24;\nconst LIMITE_MS = HORAS_INATIVIDADE * 60 * 60 * 1000;\nconst agora = Date.now();\n\nconst paraFollowUp = conversations.filter(conv => {\n  // Ignorar conversas com agente atribuído (humano)\n  if (conv.meta?.assignee) return false;\n  // Ignorar conversas de bot do sistema\n  if (conv.inbox_id === 7) return false;\n\n  const lastActivity = conv.last_activity_at * 1000; // Unix timestamp → ms\n  const tempoInativo = agora - lastActivity;\n  return tempoInativo >= LIMITE_MS;\n});\n\nif (paraFollowUp.length === 0) return [];\n\nreturn paraFollowUp.map(conv => ({\n  json: {\n    conversationId: conv.id,\n    contactName: conv.meta?.sender?.name || 'Cliente',\n    contactPhone: conv.meta?.sender?.phone_number || '',\n    inboxId: conv.inbox_id,\n    minutosInativo: Math.floor((agora - conv.last_activity_at * 1000) / 60000)\n  }\n}));"
+      },
+      "id": "code-010",
+      "name": "Filtrar Inativos 24h",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [640, 400]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Montar mensagem de follow-up com IA (GROK)\nconst d = $input.first().json;\n\nconst grokPayload = {\n  model: 'x-ai/grok-2-latest',\n  messages: [\n    {\n      role: 'system',\n      content: `Você é a assistente virtual da Medeiros Assessoria Jurídica.\nCrie uma mensagem curta e amigável de follow-up para um cliente que não respondeu há ${d.minutosInativo} minutos.\nSeja cordial, demonstre interesse em ajudar e pergunte se ainda precisa de assistência.\nNome do cliente: ${d.contactName}.\nMáximo 3 linhas. Use emojis com moderação.`\n    },\n    {\n      role: 'user',\n      content: 'Gere a mensagem de follow-up agora.'\n    }\n  ],\n  max_tokens: 200,\n  temperature: 0.8\n};\n\nreturn [{\n  json: {\n    ...d,\n    grokPayload\n  }\n}];"
+      },
+      "id": "code-011",
+      "name": "Preparar Follow-up IA",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [860, 400]
+    },
+    {
+      "parameters": {
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "method": "POST",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer OPENROUTER_API_KEY"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.grokPayload) }}",
+        "options": {
+          "timeout": 15000
+        }
+      },
+      "id": "http-010",
+      "name": "Gerar Mensagem Follow-up",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1080, 400]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extrair texto gerado pelo GROK\nconst grokResp = $input.first().json;\nconst conv = $('Filtrar Inativos 24h').item.json;\n\nconst mensagem = grokResp.choices?.[0]?.message?.content || \n  `Olá, ${conv.contactName}! 😊 Ainda podemos ajudá-lo(a)? Nossa equipe está disponível para esclarecer dúvidas e agendar sua consulta jurídica.`;\n\nreturn [{\n  json: {\n    ...conv,\n    mensagemFollowUp: mensagem.trim()\n  }\n}];"
+      },
+      "id": "code-012",
+      "name": "Extrair Mensagem",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1300, 400]
+    },
+    {
+      "parameters": {
+        "url": "=https://painel.chatatender.ia.br/api/v1/accounts/1/conversations/{{ $json.conversationId }}/messages",
+        "method": "POST",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "CHATWOOT_API_TOKEN"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={ \"content\": {{ JSON.stringify($json.mensagemFollowUp) }}, \"message_type\": \"outgoing\", \"private\": false }",
+        "options": {}
+      },
+      "id": "http-011",
+      "name": "Enviar Follow-up",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1520, 400]
+    }
+  ],
+  "connections": {
+    "Verificar a Cada Hora": {
+      "main": [
+        [{ "node": "Buscar Conversas Abertas", "type": "main", "index": 0 }]
+      ]
+    },
+    "Buscar Conversas Abertas": {
+      "main": [
+        [{ "node": "Filtrar Inativos 24h", "type": "main", "index": 0 }]
+      ]
+    },
+    "Filtrar Inativos 24h": {
+      "main": [
+        [{ "node": "Preparar Follow-up IA", "type": "main", "index": 0 }]
+      ]
+    },
+    "Preparar Follow-up IA": {
+      "main": [
+        [{ "node": "Gerar Mensagem Follow-up", "type": "main", "index": 0 }]
+      ]
+    },
+    "Gerar Mensagem Follow-up": {
+      "main": [
+        [{ "node": "Extrair Mensagem", "type": "main", "index": 0 }]
+      ]
+    },
+    "Extrair Mensagem": {
+      "main": [
+        [{ "node": "Enviar Follow-up", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+  "staticData": null
+}
+
