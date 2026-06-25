@@ -4,15 +4,22 @@ services:
   openbot-token-refresh:
     image: node:20-alpine
     container_name: openbot-token-refresh
-    restart: always
+    restart: unless-stopped
     working_dir: /app
-    volumes:
-      - ./token-refresh:/app:ro
-    command: node index.js
+    command: >
+      sh -c "
+        apk add --no-cache git &&
+        git clone https://github.com/medeiros-web/openbot-migration /repo &&
+        cp -r /repo/token-refresh/* /app/ &&
+        node index.js
+      "
     environment:
       - NODE_ENV=production
-      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
-      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID:-}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET:-}
+      - GOOGLE_REFRESH_TOKEN=${GOOGLE_REFRESH_TOKEN:-}
+      - N8N_BASE_URL=https://auto.chatatender.ia.br
+      - N8N_API_KEY=${N8N_API_KEY:-}
     networks:
       - minha_rede
     labels:
