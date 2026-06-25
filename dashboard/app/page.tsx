@@ -45,12 +45,24 @@ const config = [
   ["Versão backup OpenBot", "6.0.5"],
 ];
 
-const featuredLink = {
-  label: "WhatsApp Havek",
-  url: "https://whatsapp.havek.ai/login",
-  icon: "💬",
-  desc: "Plataforma de atendimento via WhatsApp",
-};
+const featuredLinks = [
+  {
+    label: "WhatsApp Havek",
+    url: "https://whatsapp.havek.ai/login",
+    icon: "💬",
+    desc: "Plataforma de atendimento via WhatsApp",
+    gradient: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)",
+    shadow: "rgba(37,211,102,0.35)",
+  },
+  {
+    label: "Dankicode Creations",
+    url: "https://dankicode-creations.vercel.app/",
+    icon: "🚀",
+    desc: "Plataforma de criações e projetos",
+    gradient: "linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%)",
+    shadow: "rgba(124,58,237,0.35)",
+  },
+];
 
 const links = [
   { label: "Atendimento", url: "https://atendimento-web.vercel.app", icon: "🎧" },
@@ -124,34 +136,37 @@ export default function Home() {
           </div>
 
           <p className="section-title">Acesso Rápido</p>
-          <a
-            href={featuredLink.url}
-            target="_blank"
-            rel="noreferrer"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 20,
-              background: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)",
-              borderRadius: 16,
-              padding: "24px 32px",
-              marginBottom: 16,
-              textDecoration: "none",
-              color: "#fff",
-              boxShadow: "0 4px 24px rgba(37,211,102,0.35)",
-              border: "2px solid rgba(255,255,255,0.2)",
-              transition: "transform 0.15s, box-shadow 0.15s",
-            }}
-          >
-            <span style={{ fontSize: 42 }}>{featuredLink.icon}</span>
-            <div>
-              <div style={{ fontWeight: 700, fontSize: 20, marginBottom: 4 }}>{featuredLink.label}</div>
-              <div style={{ fontSize: 14, opacity: 0.9 }}>{featuredLink.desc}</div>
-              <div style={{ fontSize: 12, opacity: 0.75, marginTop: 4, fontFamily: "monospace" }}>
-                {featuredLink.url.replace("https://", "")}
-              </div>
-            </div>
-          </a>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16, marginBottom: 16 }}>
+            {featuredLinks.map((fl) => (
+              <a
+                key={fl.url}
+                href={fl.url}
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 20,
+                  background: fl.gradient,
+                  borderRadius: 16,
+                  padding: "24px 28px",
+                  textDecoration: "none",
+                  color: "#fff",
+                  boxShadow: `0 4px 24px ${fl.shadow}`,
+                  border: "2px solid rgba(255,255,255,0.2)",
+                }}
+              >
+                <span style={{ fontSize: 42 }}>{fl.icon}</span>
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 4 }}>{fl.label}</div>
+                  <div style={{ fontSize: 13, opacity: 0.9 }}>{fl.desc}</div>
+                  <div style={{ fontSize: 11, opacity: 0.75, marginTop: 4, fontFamily: "monospace" }}>
+                    {fl.url.replace("https://", "")}
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
           <div className="grid" style={{ marginBottom: 40 }}>
             {links.map((l) => (
               <a className="card" href={l.url} target="_blank" rel="noreferrer" key={l.url}>
