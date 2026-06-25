@@ -45,6 +45,13 @@ const config = [
   ["Versão backup OpenBot", "6.0.5"],
 ];
 
+const featuredLink = {
+  label: "WhatsApp Havek",
+  url: "https://whatsapp.havek.ai/login",
+  icon: "💬",
+  desc: "Plataforma de atendimento via WhatsApp",
+};
+
 const links = [
   { label: "Atendimento", url: "https://atendimento-web.vercel.app", icon: "🎧" },
   { label: "Login Atend.", url: "https://wmm.chatatender.ia.br/login", icon: "🔑" },
@@ -117,6 +124,34 @@ export default function Home() {
           </div>
 
           <p className="section-title">Acesso Rápido</p>
+          <a
+            href={featuredLink.url}
+            target="_blank"
+            rel="noreferrer"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 20,
+              background: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)",
+              borderRadius: 16,
+              padding: "24px 32px",
+              marginBottom: 16,
+              textDecoration: "none",
+              color: "#fff",
+              boxShadow: "0 4px 24px rgba(37,211,102,0.35)",
+              border: "2px solid rgba(255,255,255,0.2)",
+              transition: "transform 0.15s, box-shadow 0.15s",
+            }}
+          >
+            <span style={{ fontSize: 42 }}>{featuredLink.icon}</span>
+            <div>
+              <div style={{ fontWeight: 700, fontSize: 20, marginBottom: 4 }}>{featuredLink.label}</div>
+              <div style={{ fontSize: 14, opacity: 0.9 }}>{featuredLink.desc}</div>
+              <div style={{ fontSize: 12, opacity: 0.75, marginTop: 4, fontFamily: "monospace" }}>
+                {featuredLink.url.replace("https://", "")}
+              </div>
+            </div>
+          </a>
           <div className="grid" style={{ marginBottom: 40 }}>
             {links.map((l) => (
               <a className="card" href={l.url} target="_blank" rel="noreferrer" key={l.url}>
