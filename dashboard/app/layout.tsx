@@ -1,19 +1,37 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata, Viewport } from 'next'
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: "Medeiros Assessoria — Painel IA",
-  description: "Painel de controle do Assistente Virtual Jurídico",
-};
+  title: 'Medeiros Assessoria — Painel IA',
+  description: 'Painel de controle do Assistente Virtual Jurídico ChatAtender',
+  manifest: '/manifest.webmanifest',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'Painel IA',
+  },
+  formatDetection: { telephone: false },
+}
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  minimumScale: 1,
+  viewportFit: 'cover',
+  themeColor: '#7C3AED',
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      <body>{children}</body>
+      <body>
+        {children}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/sw.js')})}`,
+          }}
+        />
+      </body>
     </html>
-  );
+  )
 }
