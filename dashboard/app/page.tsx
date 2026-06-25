@@ -72,6 +72,7 @@ const links = [
   { label: "Agente IA", url: "https://agente.chatatender.ia.br", icon: "🤖" },
   { label: "WhaTicket", url: "https://whaticket.chatatender.ia.br", icon: "🎫" },
   { label: "Administração", url: "https://remix-of-remix-oficial-vendus.vercel.app", icon: "🛠️" },
+  { label: "Site", url: "https://projeto-em-revisao.vercel.app", icon: "🌐" },
   { label: "Chatwoot", url: "https://painel.chatatender.ia.br", icon: "💬" },
   { label: "n8n Automações", url: "https://webhook.chatatender.ia.br/login", icon: "⚙️" },
   { label: "Portainer", url: "https://portainer.chatatender.ia.br", icon: "🐳" },
