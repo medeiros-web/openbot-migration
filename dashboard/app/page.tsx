@@ -83,6 +83,8 @@ const links = [
   { label: "n8n Automações", url: "https://webhook.chatatender.ia.br/login", icon: "⚙️" },
   { label: "Portainer", url: "https://portainer.chatatender.ia.br", icon: "🐳" },
   { label: "Krayin CRM", url: "https://crm.chatatender.ia.br", icon: "👥" },
+  { label: "Conektai", url: "https://www.conektai.com/home", icon: "🔌" },
+  { label: "Prompt Library", url: "https://www.conektai.com/prompt-library", icon: "📚" },
 ];
 
 export default function Home() {
