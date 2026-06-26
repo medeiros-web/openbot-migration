@@ -87,6 +87,8 @@ const links = [
   { label: "Prompt Library", url: "https://www.conektai.com/prompt-library", icon: "📚" },
   { label: "Petição em Word", url: "https://peticaoemword.com.br/acesso/", icon: "📝" },
   { label: "Clube IA ADV", url: "https://adv-clube-ia.memberkit.com.br/", icon: "🎓" },
+  { label: "Administração Geral", url: "https://remix-of-remix-oficial-vendus-ovld.vercel.app", icon: "🛠️" },
+  { label: "Repositório n8n", url: "https://sunshine-project-album-c1p5.vercel.app", icon: "🗄️" },
 ];
 
 export default function Home() {
