@@ -85,6 +85,8 @@ const links = [
   { label: "Krayin CRM", url: "https://crm.chatatender.ia.br", icon: "👥" },
   { label: "Conektai", url: "https://www.conektai.com/home", icon: "🔌" },
   { label: "Prompt Library", url: "https://www.conektai.com/prompt-library", icon: "📚" },
+  { label: "Petição em Word", url: "https://peticaoemword.com.br/acesso/", icon: "📝" },
+  { label: "Clube IA ADV", url: "https://adv-clube-ia.memberkit.com.br/", icon: "🎓" },
 ];
 
 export default function Home() {
