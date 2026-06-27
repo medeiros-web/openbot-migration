@@ -71,7 +71,7 @@ const links = [
   { label: "Webhook n8n", url: "https://webhook.chatatender.ia.br/login", icon: "🔗" },
   { label: "Agente IA", url: "https://agente.chatatender.ia.br", icon: "🤖" },
   { label: "WhaTicket", url: "https://whaticket.chatatender.ia.br", icon: "🎫" },
-  { label: "Administração", url: "https://remix-of-remix-oficial-vendus.vercel.app", icon: "🛠️" },
+  { label: "Administração", url: "https://fala-facil-crm.vercel.app", icon: "🛠️" },
   { label: "Site", url: "https://projeto-em-revisao.vercel.app", icon: "🌐" },
   { label: "Cloud Connect", url: "https://cloud-connect-hub.vercel.app", icon: "☁️" },
   { label: "XAMPP Companion", url: "https://xampp-companion-63e5.vercel.app", icon: "🖥️" },
