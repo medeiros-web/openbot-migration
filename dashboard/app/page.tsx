@@ -84,11 +84,14 @@ const links = [
   { label: "Portainer", url: "https://portainer.chatatender.ia.br", icon: "🐳" },
   { label: "Krayin CRM", url: "https://crm.chatatender.ia.br", icon: "👥" },
   { label: "Conektai", url: "https://www.conektai.com/home", icon: "🔌" },
+  { label: "Cursos Conektai", url: "https://www.conektai.com/cursos", icon: "🎓" },
   { label: "Prompt Library", url: "https://www.conektai.com/prompt-library", icon: "📚" },
   { label: "Petição em Word", url: "https://peticaoemword.com.br/acesso/", icon: "📝" },
   { label: "Clube IA ADV", url: "https://adv-clube-ia.memberkit.com.br/", icon: "🎓" },
   { label: "Administração Geral", url: "https://remix-of-remix-oficial-vendus-ovld.vercel.app", icon: "🛠️" },
   { label: "Repositório n8n", url: "https://sunshine-project-album-c1p5.vercel.app", icon: "🗄️" },
+  { label: "Sistema ADV", url: "https://adv.chatatender.ia.br/index.php/admin/login", icon: "📋" },
+  { label: "DankiCode Campus", url: "https://cursos.dankicode.com/campus", icon: "🎓" },
 ];
 
 export default function Home() {
