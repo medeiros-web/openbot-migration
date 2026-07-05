@@ -355,6 +355,21 @@ header {
   color: var(--text);
 }
 
+/* ── Pulsing highlight ── */
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 4px 24px var(--pulse-shadow, rgba(124,58,237,0.35)), 0 0 0 0 var(--pulse-ring, rgba(124,58,237,0.5));
+  }
+  50% {
+    box-shadow: 0 4px 24px var(--pulse-shadow, rgba(124,58,237,0.35)), 0 0 0 10px rgba(124,58,237,0);
+  }
+}
+
+.featured-pulse {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
 /* ── Footer ── */
 
 footer {

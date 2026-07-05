@@ -47,12 +47,22 @@ const config = [
 
 const featuredLinks = [
   {
+    label: "ANMlegis",
+    url: "https://anmlegis.chatatender.ia.br",
+    icon: "📜",
+    desc: "Legislação e normas da ANM (Agência Nacional de Mineração)",
+    gradient: "linear-gradient(135deg, #F59E0B 0%, #EA580C 100%)",
+    shadow: "rgba(245,158,11,0.35)",
+    pulse: true,
+  },
+  {
     label: "WhatsApp Havek",
     url: "https://whatsapp.havek.ai/login",
     icon: "💬",
     desc: "Plataforma de atendimento via WhatsApp",
     gradient: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)",
     shadow: "rgba(37,211,102,0.35)",
+    pulse: false,
   },
   {
     label: "Dankicode Creations",
@@ -61,6 +71,7 @@ const featuredLinks = [
     desc: "Plataforma de criações e projetos",
     gradient: "linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%)",
     shadow: "rgba(124,58,237,0.35)",
+    pulse: false,
   },
 ];
 
@@ -160,6 +171,7 @@ export default function Home() {
                 href={fl.url}
                 target="_blank"
                 rel="noreferrer"
+                className={fl.pulse ? "featured-pulse" : undefined}
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -171,6 +183,9 @@ export default function Home() {
                   color: "#fff",
                   boxShadow: `0 4px 24px ${fl.shadow}`,
                   border: "2px solid rgba(255,255,255,0.2)",
+                  ...(fl.pulse
+                    ? ({ "--pulse-shadow": fl.shadow, "--pulse-ring": fl.shadow } as React.CSSProperties)
+                    : {}),
                 }}
               >
                 <span style={{ fontSize: 42 }}>{fl.icon}</span>
