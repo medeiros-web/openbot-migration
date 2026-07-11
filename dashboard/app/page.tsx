@@ -83,7 +83,7 @@ const links = [
   { label: "Agente IA", url: "https://agente.chatatender.ia.br", icon: "🤖" },
   { label: "WhaTicket", url: "https://whaticket.chatatender.ia.br", icon: "🎫" },
   { label: "Administração", url: "https://fala-facil-crm.vercel.app", icon: "🛠️" },
-  { label: "Site", url: "https://projeto-em-revisao.vercel.app", icon: "🌐" },
+  { label: "Site", url: "https://anm.chatatender.ia.br", icon: "🌐" },
   { label: "Cloud Connect", url: "https://cloud-connect-hub.vercel.app", icon: "☁️" },
   { label: "XAMPP Companion", url: "https://xampp-companion-63e5.vercel.app", icon: "🖥️" },
   { label: "Sonic Bloom", url: "https://sonic-bloom-vault.vercel.app", icon: "🎵" },
