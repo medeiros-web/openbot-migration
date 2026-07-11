@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="maGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#4F46E5"/>
+    </linearGradient>
+    <linearGradient id="maGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5D06A"/>
+      <stop offset="100%" stop-color="#C9A227"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="100" cy="100" r="96" fill="url(#maGrad)"/>
+  <circle cx="100" cy="100" r="96" fill="none" stroke="url(#maGold)" stroke-width="2" opacity="0.6"/>
+
+  <g fill="none" stroke="url(#maGold)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="100" y1="46" x2="100" y2="150"/>
+    <line x1="58" y1="150" x2="142" y2="150"/>
+    <line x1="52" y1="62" x2="148" y2="62"/>
+
+    <path d="M52 62 L34 100 A18 18 0 0 0 70 100 Z"/>
+    <path d="M148 62 L130 100 A18 18 0 0 0 166 100 Z"/>
+
+    <line x1="52" y1="62" x2="34" y2="100"/>
+    <line x1="52" y1="62" x2="70" y2="100"/>
+    <line x1="148" y1="62" x2="130" y2="100"/>
+    <line x1="148" y1="62" x2="166" y2="100"/>
+
+    <path d="M84 46 L100 38 L116 46" />
+    <circle cx="100" cy="44" r="5" fill="url(#maGold)" stroke="none"/>
+  </g>
+</svg>
