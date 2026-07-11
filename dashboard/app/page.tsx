@@ -101,7 +101,7 @@ const links = [
   { label: "Clube IA ADV", url: "https://adv-clube-ia.memberkit.com.br/", icon: "🎓" },
   { label: "Administração Geral", url: "https://remix-of-remix-oficial-vendus-ovld.vercel.app", icon: "🛠️" },
   { label: "Repositório n8n", url: "https://sunshine-project-album-c1p5.vercel.app", icon: "🗄️" },
-  { label: "Plataforma Sistema de IA", url: "https://fala.chatatender.ia.br", icon: "🧠" },
+  { label: "Plataforma Sistema de IA", url: "https://erp.chatatender.ia.br", icon: "🧠" },
   { label: "DankiCode Campus", url: "https://cursos.dankicode.com/campus", icon: "🎓" },
 ];
 
