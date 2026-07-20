@@ -212,6 +212,38 @@ export default function Home() {
           <section className="cta-section">
             <h2>Precisa de ajuda?</h2>
             <p>Acesse o Chatwoot para gerenciar conversas ou o n8n para editar workflows.</p>
+
+            <a
+              href="https://adv.chatatender.ia.br"
+              target="_blank"
+              rel="noreferrer"
+              className="featured-pulse"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 16,
+                justifyContent: "center",
+                maxWidth: 420,
+                margin: "0 auto 24px",
+                background: "linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%)",
+                borderRadius: 16,
+                padding: "20px 28px",
+                textDecoration: "none",
+                color: "#fff",
+                boxShadow: "0 4px 24px rgba(124,58,237,0.35)",
+                border: "2px solid rgba(255,255,255,0.2)",
+                ...({ "--pulse-shadow": "rgba(124,58,237,0.35)", "--pulse-ring": "rgba(124,58,237,0.5)" } as React.CSSProperties),
+              }}
+            >
+              <span style={{ fontSize: 36 }}>⚖️</span>
+              <div style={{ textAlign: "left" }}>
+                <div style={{ fontWeight: 700, fontSize: 17 }}>Causídico Atendimento IA</div>
+                <div style={{ fontSize: 12, opacity: 0.85, marginTop: 2, fontFamily: "monospace" }}>
+                  adv.chatatender.ia.br
+                </div>
+              </div>
+            </a>
+
             <div className="btn-group">
               <a className="btn btn-primary" href="https://painel.chatatender.ia.br" target="_blank">
                 💬 Abrir Chatwoot
