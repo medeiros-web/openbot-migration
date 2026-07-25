@@ -90,7 +90,7 @@ const links = [
   { label: "Processos", url: "https://processo-demanda.vercel.app", icon: "⚖️" },
   { label: "Doc Archive", url: "https://digital-document-archive-q22v.vercel.app", icon: "📁" },
   { label: "Plataforma Jurídica", url: "https://legal-ai-assistant-one.vercel.app/", icon: "⚖️" },
-  { label: "Agente IA", url: "https://bot.chatatender.ia.br", icon: "💬" },
+  { label: "Plataforma Agentes IA", url: "https://bot.chatatender.ia.br", icon: "💬" },
   { label: "Plataforma Atendimento IA", url: "https://fala.chatatender.ia.br/painel", icon: "⚙️" },
   { label: "Portainer", url: "https://portainer.chatatender.ia.br", icon: "🐳" },
   { label: "Krayin CRM", url: "https://crm.chatatender.ia.br", icon: "👥" },
