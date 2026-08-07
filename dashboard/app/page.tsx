@@ -95,14 +95,15 @@ const links = [
   { label: "Portainer", url: "https://portainer.chatatender.ia.br", icon: "🐳" },
   { label: "Krayin CRM", url: "https://crm.chatatender.ia.br", icon: "👥" },
   { label: "Conektai", url: "https://www.conektai.com/home", icon: "🔌" },
-  { label: "Cursos Conektai", url: "https://www.conektai.com/cursos", icon: "🎓" },
-  { label: "Prompt Library", url: "https://www.conektai.com/prompt-library", icon: "📚" },
+  { label: "Mega CRM IA", url: "https://crm-ia-medeiros-assessoria-s-projects.vercel.app/auth/login", icon: "🎓" },
+  { label: "Zheus IA", url: "https://lovablezheus.chatatender.ia.br/", icon: "📚" },
   { label: "Petição em Word", url: "https://peticaoemword.com.br/acesso/", icon: "📝" },
   { label: "Clube IA ADV", url: "https://adv-clube-ia.memberkit.com.br/", icon: "🎓" },
   { label: "Administração Geral", url: "https://remix-of-remix-oficial-vendus-ovld.vercel.app", icon: "🛠️" },
   { label: "Repositório n8n", url: "https://sunshine-project-album-c1p5.vercel.app", icon: "🗄️" },
   { label: "Plataforma Sistema de IA", url: "https://erp.chatatender.ia.br", icon: "🧠" },
   { label: "DankiCode Campus", url: "https://cursos.dankicode.com/campus", icon: "🎓" },
+  { label: "AtendChat", url: "https://advogado.chatatender.ia.br/login", icon: "🗨️" },
 ];
 
 export default function Home() {
