@@ -91,7 +91,7 @@ const links = [
   { label: "Doc Archive", url: "https://digital-document-archive-q22v.vercel.app", icon: "📁" },
   { label: "Plataforma Jurídica", url: "https://legal-ai-assistant-one.vercel.app/", icon: "⚖️" },
   { label: "Plataforma Agentes IA", url: "https://bot.chatatender.ia.br", icon: "💬" },
-  { label: "Plataforma Atendimento IA", url: "https://fala.chatatender.ia.br/painel", icon: "⚙️" },
+  { label: "Plataforma Marketing IA", url: "https://marketing-ten-tawny.vercel.app/admin", icon: "⚙️" },
   { label: "Portainer", url: "https://portainer.chatatender.ia.br", icon: "🐳" },
   { label: "Krayin CRM", url: "https://crm.chatatender.ia.br", icon: "👥" },
   { label: "Conektai", url: "https://www.conektai.com/home", icon: "🔌" },
