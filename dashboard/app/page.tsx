@@ -47,6 +47,15 @@ const config = [
 
 const featuredLinks = [
   {
+    label: "Mega CRM IA",
+    url: "https://crm-ia-medeiros-assessoria-s-projects.vercel.app/auth/login",
+    icon: "🎓",
+    desc: "CRM com inteligência artificial",
+    gradient: "linear-gradient(135deg, #10B981 0%, #047857 100%)",
+    shadow: "rgba(16,185,129,0.35)",
+    pulse: true,
+  },
+  {
     label: "ANMlegis",
     url: "https://anmlegis.chatatender.ia.br",
     icon: "📜",
@@ -113,7 +122,6 @@ const links = [
   { label: "Portainer", url: "https://portainer.chatatender.ia.br", icon: "🐳" },
   { label: "Krayin CRM", url: "https://crm.chatatender.ia.br", icon: "👥" },
   { label: "Conektai", url: "https://www.conektai.com/home", icon: "🔌" },
-  { label: "Mega CRM IA", url: "https://crm-ia-medeiros-assessoria-s-projects.vercel.app/auth/login", icon: "🎓" },
   { label: "Creation IA", url: "https://creation.chatatender.ia.br/", icon: "📚" },
   { label: "Petição em Word", url: "https://peticaoemword.com.br/acesso/", icon: "📝" },
   { label: "Clube IA ADV", url: "https://adv-clube-ia.memberkit.com.br/", icon: "🎓" },
