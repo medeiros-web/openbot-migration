@@ -274,6 +274,37 @@ export default function Home() {
               </div>
             </a>
 
+            <a
+              href="https://wacrm-tawny.vercel.app"
+              target="_blank"
+              rel="noreferrer"
+              className="featured-pulse"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 16,
+                justifyContent: "center",
+                maxWidth: 420,
+                margin: "0 auto 24px",
+                background: "linear-gradient(135deg, #10B981 0%, #047857 100%)",
+                borderRadius: 16,
+                padding: "20px 28px",
+                textDecoration: "none",
+                color: "#fff",
+                boxShadow: "0 4px 24px rgba(16,185,129,0.35)",
+                border: "2px solid rgba(255,255,255,0.2)",
+                ...({ "--pulse-shadow": "rgba(16,185,129,0.35)", "--pulse-ring": "rgba(16,185,129,0.5)" } as React.CSSProperties),
+              }}
+            >
+              <span style={{ fontSize: 36 }}>🗂️</span>
+              <div style={{ textAlign: "left" }}>
+                <div style={{ fontWeight: 700, fontSize: 17 }}>CRM Cadastro</div>
+                <div style={{ fontSize: 12, opacity: 0.85, marginTop: 2, fontFamily: "monospace" }}>
+                  wacrm-tawny.vercel.app
+                </div>
+              </div>
+            </a>
+
             <div className="btn-group">
               <a className="btn btn-primary" href="https://painel.chatatender.ia.br" target="_blank">
                 💬 Abrir Chatwoot
