@@ -131,6 +131,7 @@ const links = [
   { label: "DankiCode Campus", url: "https://cursos.dankicode.com/campus", icon: "🎓" },
   { label: "AtendChat", url: "https://advogado.chatatender.ia.br/login", icon: "🗨️" },
   { label: "Marketing", url: "https://marketing.chatatender.ia.br/", icon: "📣" },
+  { label: "Gerador de Propostas Comerciais", url: "https://commercial-proposal-generator-seven.vercel.app/", icon: "📄" },
 ];
 
 export default function Home() {
