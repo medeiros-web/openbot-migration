@@ -73,6 +73,15 @@ const featuredLinks = [
     shadow: "rgba(124,58,237,0.35)",
     pulse: false,
   },
+  {
+    label: "Site DIVULGAÇÃO",
+    url: "https://tecnologia.chatatender.ia.br/",
+    icon: "📢",
+    desc: "Site de divulgação",
+    gradient: "linear-gradient(135deg, #F43F5E 0%, #BE123C 100%)",
+    shadow: "rgba(244,63,94,0.35)",
+    pulse: true,
+  },
 ];
 
 const links = [
@@ -96,7 +105,7 @@ const links = [
   { label: "Krayin CRM", url: "https://crm.chatatender.ia.br", icon: "👥" },
   { label: "Conektai", url: "https://www.conektai.com/home", icon: "🔌" },
   { label: "Mega CRM IA", url: "https://crm-ia-medeiros-assessoria-s-projects.vercel.app/auth/login", icon: "🎓" },
-  { label: "Zheus IA", url: "https://lovablezheus.chatatender.ia.br/", icon: "📚" },
+  { label: "Creation IA", url: "https://creation.chatatender.ia.br/", icon: "📚" },
   { label: "Petição em Word", url: "https://peticaoemword.com.br/acesso/", icon: "📝" },
   { label: "Clube IA ADV", url: "https://adv-clube-ia.memberkit.com.br/", icon: "🎓" },
   { label: "Administração Geral", url: "https://remix-of-remix-oficial-vendus-ovld.vercel.app", icon: "🛠️" },
@@ -104,6 +113,7 @@ const links = [
   { label: "Plataforma Sistema de IA", url: "https://erp.chatatender.ia.br", icon: "🧠" },
   { label: "DankiCode Campus", url: "https://cursos.dankicode.com/campus", icon: "🎓" },
   { label: "AtendChat", url: "https://advogado.chatatender.ia.br/login", icon: "🗨️" },
+  { label: "Marketing", url: "https://marketing.chatatender.ia.br/", icon: "📣" },
 ];
 
 export default function Home() {
