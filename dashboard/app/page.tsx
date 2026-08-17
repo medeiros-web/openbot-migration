@@ -82,6 +82,15 @@ const featuredLinks = [
     shadow: "rgba(244,63,94,0.35)",
     pulse: true,
   },
+  {
+    label: "DIVULGAÇÃO",
+    url: "https://marketing-ten-tawny.vercel.app/admin",
+    icon: "📣",
+    desc: "Painel administrativo de marketing",
+    gradient: "linear-gradient(135deg, #0EA5E9 0%, #0369A1 100%)",
+    shadow: "rgba(14,165,233,0.35)",
+    pulse: true,
+  },
 ];
 
 const links = [
