@@ -100,6 +100,15 @@ const featuredLinks = [
     shadow: "rgba(14,165,233,0.35)",
     pulse: true,
   },
+  {
+    label: "Direct Instagram",
+    url: "https://many-main-henna.vercel.app/",
+    icon: "📸",
+    desc: "Gestão de mensagens diretas do Instagram",
+    gradient: "linear-gradient(135deg, #C026D3 0%, #7E22CE 100%)",
+    shadow: "rgba(192,38,211,0.35)",
+    pulse: true,
+  },
 ];
 
 const links = [
