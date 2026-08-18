@@ -109,6 +109,15 @@ const featuredLinks = [
     shadow: "rgba(192,38,211,0.35)",
     pulse: true,
   },
+  {
+    label: "Roteador LLMs",
+    url: "https://llm.creation.dev.br",
+    icon: "🧭",
+    desc: "Roteamento de modelos de IA (LLMs)",
+    gradient: "linear-gradient(135deg, #6366F1 0%, #4338CA 100%)",
+    shadow: "rgba(99,102,241,0.35)",
+    pulse: true,
+  },
 ];
 
 const links = [
