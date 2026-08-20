@@ -1,3 +1,5 @@
+import CopyKey from "./CopyKey";
+
 export const revalidate = 0;
 
 const workflows = [
@@ -119,7 +121,7 @@ const featuredLinks = [
     pulse: true,
   },
   {
-    label: "EVOLUTION API (292dd9230f6a7ce50e7ed9274194dad7c17196354d637afeb3b7f0537bb9f737)",
+    label: "EVOLUTION API",
     url: "https://evo.creation.dev.br",
     icon: "🔌",
     desc: "Instância Evolution API",
@@ -345,8 +347,9 @@ export default function Home() {
       </main>
 
       <footer>
-        <div className="container">
-          Medeiros Assessoria Jurídica · Assistente Virtual · {new Date().getFullYear()}
+        <div className="container" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
+          <span>Medeiros Assessoria Jurídica · Assistente Virtual · {new Date().getFullYear()}</span>
+          <CopyKey label="EVOLUTION API" value="292dd9230f6a7ce50e7ed9274194dad7c17196354d637afeb3b7f0537bb9f737" />
         </div>
       </footer>
     </>
