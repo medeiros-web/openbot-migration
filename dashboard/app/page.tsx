@@ -118,6 +118,15 @@ const featuredLinks = [
     shadow: "rgba(99,102,241,0.35)",
     pulse: true,
   },
+  {
+    label: "EVOLUTION API (292dd9230f6a7ce50e7ed9274194dad7c17196354d637afeb3b7f0537bb9f737)",
+    url: "https://evo.creation.dev.br",
+    icon: "🔌",
+    desc: "Instância Evolution API",
+    gradient: "linear-gradient(135deg, #22C55E 0%, #15803D 100%)",
+    shadow: "rgba(34,197,94,0.35)",
+    pulse: true,
+  },
 ];
 
 const links = [
