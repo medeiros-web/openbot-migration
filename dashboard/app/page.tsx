@@ -161,7 +161,7 @@ const links = [
   { label: "AtendChat", url: "https://advogado.chatatender.ia.br/login", icon: "🗨️" },
   { label: "Marketing", url: "https://marketing.chatatender.ia.br/", icon: "📣" },
   { label: "Gerador de Propostas Comerciais", url: "https://commercial-proposal-generator-seven.vercel.app/", icon: "📄" },
-  { label: "Plataformas e Cursos YouTube IA", url: "https://automation-craft-space.lovable.app", icon: "🎬" },
+  { label: "Plataformas e Cursos YouTube IA", url: "https://automation-craft-space-f8wc.vercel.app/auth", icon: "🎬" },
 ];
 
 export default function Home() {
