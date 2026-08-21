@@ -173,6 +173,7 @@ const links = [
   { label: "Plataformas e Cursos YouTube IA", url: "https://automation-craft-space-n72d.vercel.app/", icon: "🎬" },
   { label: "Portal de Músicas", url: "https://www.packdemusicas.com.br/painel/painelmusicas.php", icon: "🎵" },
   { label: "Pack Musical", url: "https://packdemusicas.com.br/Product/05-Video-Clipes/acesso/entrar.php", icon: "🎶" },
+  { label: "ERP IA", url: "https://erp.creation.dev.br/", icon: "🧮" },
 ];
 
 export default function Home() {
