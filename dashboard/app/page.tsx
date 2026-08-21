@@ -129,6 +129,15 @@ const featuredLinks = [
     shadow: "rgba(34,197,94,0.35)",
     pulse: true,
   },
+  {
+    label: "Execução Fiscal",
+    url: "https://estudantesebradi.ead.br/login",
+    icon: "⚖️",
+    desc: "Portal de execução fiscal",
+    gradient: "linear-gradient(135deg, #78716C 0%, #44403C 100%)",
+    shadow: "rgba(120,113,108,0.35)",
+    pulse: true,
+  },
 ];
 
 const links = [
@@ -162,7 +171,6 @@ const links = [
   { label: "Marketing", url: "https://marketing.chatatender.ia.br/", icon: "📣" },
   { label: "Gerador de Propostas Comerciais", url: "https://commercial-proposal-generator-seven.vercel.app/", icon: "📄" },
   { label: "Plataformas e Cursos YouTube IA", url: "https://automation-craft-space-n72d.vercel.app/", icon: "🎬" },
-  { label: "Execução Fiscal", url: "https://estudantesebradi.ead.br/login", icon: "⚖️" },
   { label: "Portal de Músicas", url: "https://www.packdemusicas.com.br/painel/painelmusicas.php", icon: "🎵" },
   { label: "Pack Musical", url: "https://packdemusicas.com.br/Product/05-Video-Clipes/acesso/entrar.php", icon: "🎶" },
 ];
