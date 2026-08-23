@@ -47,7 +47,18 @@ const config = [
   ["Versão backup OpenBot", "6.0.5"],
 ];
 
-const featuredLinks = [
+type FeaturedLink = {
+  label: string;
+  url: string;
+  icon: string;
+  desc: string;
+  gradient: string;
+  shadow: string;
+  pulse: boolean;
+  center?: boolean;
+};
+
+const featuredLinks: FeaturedLink[] = [
   {
     label: "Mega CRM IA",
     url: "https://crm-ia-medeiros-assessoria-s-projects.vercel.app/auth/login",
@@ -146,6 +157,7 @@ const featuredLinks = [
     gradient: "linear-gradient(135deg, #0EA5E9 0%, #1D4ED8 100%)",
     shadow: "rgba(14,165,233,0.35)",
     pulse: true,
+    center: true,
   },
 ];
 
@@ -254,7 +266,9 @@ export default function Home() {
                 className={fl.pulse ? "featured-pulse" : undefined}
                 style={{
                   display: "flex",
+                  flexDirection: fl.center ? "column" : "row",
                   alignItems: "center",
+                  justifyContent: "center",
                   gap: 20,
                   background: fl.gradient,
                   borderRadius: 16,
@@ -269,10 +283,10 @@ export default function Home() {
                 }}
               >
                 <span style={{ fontSize: 42 }}>{fl.icon}</span>
-                <div>
+                <div style={fl.center ? { textAlign: "center" } : undefined}>
                   <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 4 }}>{fl.label}</div>
                   <div style={{ fontSize: 13, opacity: 0.9 }}>{fl.desc}</div>
-                  <div style={{ fontSize: 11, opacity: 0.75, marginTop: 4, fontFamily: "monospace" }}>
+                  <div style={{ fontSize: 11, opacity: 0.75, marginTop: 4, fontFamily: "monospace", wordBreak: "break-word" }}>
                     {fl.url.replace("https://", "")}
                   </div>
                 </div>
