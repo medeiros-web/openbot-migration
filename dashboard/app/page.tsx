@@ -170,7 +170,7 @@ const links = [
   { label: "AtendChat", url: "https://advogado.chatatender.ia.br/login", icon: "🗨️" },
   { label: "Marketing", url: "https://marketing.chatatender.ia.br/", icon: "📣" },
   { label: "Gerador de Propostas Comerciais", url: "https://commercial-proposal-generator-seven.vercel.app/", icon: "📄" },
-  { label: "Plataformas e Cursos YouTube IA", url: "https://automation-craft-space-n72d.vercel.app/", icon: "🎬" },
+  { label: "Plataformas e Cursos YouTube IA", url: "https://automation-craft-space-t62g.vercel.app", icon: "🎬" },
   { label: "Portal de Músicas", url: "https://www.packdemusicas.com.br/painel/painelmusicas.php", icon: "🎵" },
   { label: "Pack Musical", url: "https://packdemusicas.com.br/Product/05-Video-Clipes/acesso/entrar.php", icon: "🎶" },
   { label: "ERP IA", url: "https://erp.creation.dev.br/", icon: "🧮" },
