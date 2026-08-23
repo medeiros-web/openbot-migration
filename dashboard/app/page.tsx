@@ -159,6 +159,15 @@ const featuredLinks: FeaturedLink[] = [
     pulse: true,
     center: true,
   },
+  {
+    label: "Construtor de Prompts",
+    url: "https://novaeradaprogramacao.com/construtor/construtor.php",
+    icon: "🧩",
+    desc: "Construtor de prompts para IA",
+    gradient: "linear-gradient(135deg, #8B5CF6 0%, #5B21B6 100%)",
+    shadow: "rgba(139,92,246,0.35)",
+    pulse: true,
+  },
 ];
 
 const links = [
