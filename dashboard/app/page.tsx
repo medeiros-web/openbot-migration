@@ -138,6 +138,15 @@ const featuredLinks = [
     shadow: "rgba(120,113,108,0.35)",
     pulse: true,
   },
+  {
+    label: "Software de Agendamento",
+    url: "https://chatatender.creation.dev.br/login/painel/login.php",
+    icon: "🗓️",
+    desc: "Sistema de agendamento",
+    gradient: "linear-gradient(135deg, #0EA5E9 0%, #1D4ED8 100%)",
+    shadow: "rgba(14,165,233,0.35)",
+    pulse: true,
+  },
 ];
 
 const links = [
