@@ -411,6 +411,37 @@ export default function Home() {
               </div>
             </a>
 
+            <a
+              href="https://painel.creation.dev.br/"
+              target="_blank"
+              rel="noreferrer"
+              className="featured-pulse"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 16,
+                justifyContent: "center",
+                maxWidth: 420,
+                margin: "0 auto 24px",
+                background: "linear-gradient(135deg, #14B8A6 0%, #0F766E 100%)",
+                borderRadius: 16,
+                padding: "20px 28px",
+                textDecoration: "none",
+                color: "#fff",
+                boxShadow: "0 4px 24px rgba(20,184,166,0.35)",
+                border: "2px solid rgba(255,255,255,0.2)",
+                ...({ "--pulse-shadow": "rgba(20,184,166,0.35)", "--pulse-ring": "rgba(20,184,166,0.5)" } as React.CSSProperties),
+              }}
+            >
+              <span style={{ fontSize: 36 }}>🖥️</span>
+              <div style={{ textAlign: "left" }}>
+                <div style={{ fontWeight: 700, fontSize: 17 }}>Área de Trabalho</div>
+                <div style={{ fontSize: 12, opacity: 0.85, marginTop: 2, fontFamily: "monospace" }}>
+                  painel.creation.dev.br
+                </div>
+              </div>
+            </a>
+
             <div className="btn-group">
               <a className="btn btn-primary" href="https://painel.chatatender.ia.br" target="_blank">
                 💬 Abrir Chatwoot
