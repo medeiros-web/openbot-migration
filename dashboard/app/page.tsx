@@ -206,6 +206,7 @@ const links = [
   { label: "ERP IA", url: "https://erp.creation.dev.br/", icon: "🧮" },
   { label: "LLM Github", url: "https://ext.chatatender.ia.br/login", icon: "🐙" },
   { label: "Extensão Creation Github", url: "https://ext.chatatender.ia.br/mestres-lovable/", icon: "🧩" },
+  { label: "Data Prospect", url: "https://data.creation.dev.br/", icon: "📊" },
 ];
 
 export default function Home() {
