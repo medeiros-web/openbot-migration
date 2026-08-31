@@ -207,6 +207,9 @@ const links = [
   { label: "LLM Github", url: "https://ext.chatatender.ia.br/login", icon: "🐙" },
   { label: "Extensão Creation Github", url: "https://ext.chatatender.ia.br/mestres-lovable/", icon: "🧩" },
   { label: "Data Prospect", url: "https://data.creation.dev.br/", icon: "📊" },
+  { label: "BotWhatsApp", url: "https://bot.creation.dev.br", icon: "🤖" },
+  { label: "Comunidade ADV IA", url: "https://comunidade.superinteligencia.org", icon: "🧠" },
+  { label: "Violão/Treino", url: "https://www-ronaldomusic-com-br.lovable.app", icon: "🎸" },
 ];
 
 export default function Home() {
