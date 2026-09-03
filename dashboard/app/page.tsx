@@ -210,6 +210,7 @@ const links = [
   { label: "BotWhatsApp", url: "https://bot.creation.dev.br", icon: "🤖" },
   { label: "Comunidade ADV IA", url: "https://comunidade.superinteligencia.org", icon: "🧠" },
   { label: "Violão/Treino", url: "https://www-ronaldomusic-com-br.lovable.app", icon: "🎸" },
+  { label: "Integração Instagram", url: "https://directpro-v2.vercel.app", icon: "📸" },
 ];
 
 export default function Home() {
