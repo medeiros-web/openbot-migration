@@ -168,6 +168,15 @@ const featuredLinks: FeaturedLink[] = [
     shadow: "rgba(139,92,246,0.35)",
     pulse: true,
   },
+  {
+    label: "Planilha Interativa",
+    url: "https://planilha.creation.dev.br",
+    icon: "📊",
+    desc: "Planilha interativa de gestão",
+    gradient: "linear-gradient(135deg, #06B6D4 0%, #0E7490 100%)",
+    shadow: "rgba(6,182,212,0.35)",
+    pulse: true,
+  },
 ];
 
 const links = [
