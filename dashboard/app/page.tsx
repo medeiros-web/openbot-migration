@@ -211,6 +211,8 @@ const links = [
   { label: "Comunidade ADV IA", url: "https://comunidade.superinteligencia.org", icon: "🧠" },
   { label: "Violão/Treino", url: "https://www-ronaldomusic-com-br.lovable.app", icon: "🎸" },
   { label: "Integração Instagram", url: "https://directpro-v2.vercel.app", icon: "📸" },
+  { label: "Credenciais / Campanhas", url: "https://medeirosapi.creation.dev.br", icon: "🔑" },
+  { label: "Painel / Campanhas", url: "https://medeiros.creation.dev.br", icon: "📣" },
 ];
 
 export default function Home() {
