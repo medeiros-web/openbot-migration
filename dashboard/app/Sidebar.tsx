@@ -23,6 +23,7 @@ const featured: FeaturedItem[] = [
   { label: "Software de Agendamento", url: "https://chatatender.creation.dev.br/login/painel/login.php", icon: "🗓️", color: "#0EA5E9" },
   { label: "Construtor de Prompts", url: "https://novaeradaprogramacao.com/construtor/construtor.php", icon: "🧩", color: "#8B5CF6" },
   { label: "Planilha Interativa", url: "https://planilha.creation.dev.br", icon: "📊", color: "#06B6D4" },
+  { label: "ChatBullQ", url: "https://chatbullq.creation.dev.br/login", icon: "🐂", color: "#EF4444" },
 ];
 
 export default function Sidebar() {
