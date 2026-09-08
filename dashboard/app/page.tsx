@@ -93,6 +93,7 @@ const links = [
   { label: "Painel / Campanhas", url: "https://medeiros.creation.dev.br", icon: "📣" },
   { label: "MAUTIC", url: "https://mautic.creation.dev.br", icon: "📧" },
   { label: "ADV Plataforma WhatsApp", url: "https://adv.creation.dev.br", icon: "💬" },
+  { label: "Supabase", url: "https://supabase.atender.adv.br", icon: "🗄️" },
 ];
 
 export default function Home() {
