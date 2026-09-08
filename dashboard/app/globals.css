@@ -370,6 +370,130 @@ header {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
+/* ── Sidebar (Destaques) ── */
+
+@media (min-width: 1024px) {
+  .page-content { margin-left: 240px; }
+}
+
+.sidebar-toggle {
+  position: fixed;
+  top: calc(14px + env(safe-area-inset-top));
+  right: 16px;
+  z-index: 30;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+}
+
+@media (min-width: 1024px) {
+  .sidebar-toggle { display: none; }
+}
+
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 39;
+}
+
+@media (min-width: 1024px) {
+  .sidebar-backdrop { display: none; }
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 240px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+}
+
+.sidebar.sidebar-open {
+  transform: translateX(0);
+}
+
+@media (min-width: 1024px) {
+  .sidebar { transform: none; }
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px calc(16px + env(safe-area-inset-top)) 16px;
+  padding-top: calc(16px + env(safe-area-inset-top));
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.sidebar-close {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1;
+  padding: 4px;
+}
+
+@media (min-width: 1024px) {
+  .sidebar-close { display: none; }
+}
+
+.sidebar-list {
+  overflow-y: auto;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  border-left: 3px solid var(--item-color);
+  background: color-mix(in srgb, var(--item-color) 10%, transparent);
+  transition: background 0.15s;
+  min-height: 44px;
+}
+
+.sidebar-item:hover {
+  background: color-mix(in srgb, var(--item-color) 20%, transparent);
+}
+
+.sidebar-item-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.sidebar-item-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* ── Footer ── */
 
 footer {

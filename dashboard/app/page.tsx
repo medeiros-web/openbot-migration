@@ -1,4 +1,5 @@
 import CopyKey from "./CopyKey";
+import Sidebar from "./Sidebar";
 
 export const revalidate = 0;
 
@@ -45,138 +46,6 @@ const config = [
   ["Contas Google", "medeirosassessor.adv@gmail.com"],
   ["Webhook Chatwoot ID", "#7 — OpenBot IA Juridica (GROK)"],
   ["Versão backup OpenBot", "6.0.5"],
-];
-
-type FeaturedLink = {
-  label: string;
-  url: string;
-  icon: string;
-  desc: string;
-  gradient: string;
-  shadow: string;
-  pulse: boolean;
-  center?: boolean;
-};
-
-const featuredLinks: FeaturedLink[] = [
-  {
-    label: "Mega CRM IA",
-    url: "https://crm-ia-medeiros-assessoria-s-projects.vercel.app/auth/login",
-    icon: "🎓",
-    desc: "CRM com inteligência artificial",
-    gradient: "linear-gradient(135deg, #10B981 0%, #047857 100%)",
-    shadow: "rgba(16,185,129,0.35)",
-    pulse: true,
-  },
-  {
-    label: "ANMlegis",
-    url: "https://anmlegis.chatatender.ia.br",
-    icon: "📜",
-    desc: "Legislação e normas da ANM (Agência Nacional de Mineração)",
-    gradient: "linear-gradient(135deg, #F59E0B 0%, #EA580C 100%)",
-    shadow: "rgba(245,158,11,0.35)",
-    pulse: true,
-  },
-  {
-    label: "WhatsApp Havek",
-    url: "https://whatsapp.havek.ai/login",
-    icon: "💬",
-    desc: "Plataforma de atendimento via WhatsApp",
-    gradient: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)",
-    shadow: "rgba(37,211,102,0.35)",
-    pulse: false,
-  },
-  {
-    label: "Dankicode Creations",
-    url: "https://dankicode-creations.vercel.app/",
-    icon: "🚀",
-    desc: "Plataforma de criações e projetos",
-    gradient: "linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%)",
-    shadow: "rgba(124,58,237,0.35)",
-    pulse: false,
-  },
-  {
-    label: "Site DIVULGAÇÃO",
-    url: "https://tecnologia.chatatender.ia.br/",
-    icon: "📢",
-    desc: "Site de divulgação",
-    gradient: "linear-gradient(135deg, #F43F5E 0%, #BE123C 100%)",
-    shadow: "rgba(244,63,94,0.35)",
-    pulse: true,
-  },
-  {
-    label: "DIVULGAÇÃO",
-    url: "https://marketing-ten-tawny.vercel.app/admin",
-    icon: "📣",
-    desc: "Painel administrativo de marketing",
-    gradient: "linear-gradient(135deg, #0EA5E9 0%, #0369A1 100%)",
-    shadow: "rgba(14,165,233,0.35)",
-    pulse: true,
-  },
-  {
-    label: "Direct Instagram",
-    url: "https://many-main-henna.vercel.app/",
-    icon: "📸",
-    desc: "Gestão de mensagens diretas do Instagram",
-    gradient: "linear-gradient(135deg, #C026D3 0%, #7E22CE 100%)",
-    shadow: "rgba(192,38,211,0.35)",
-    pulse: true,
-  },
-  {
-    label: "Roteador LLMs",
-    url: "https://llm.creation.dev.br",
-    icon: "🧭",
-    desc: "Roteamento de modelos de IA (LLMs)",
-    gradient: "linear-gradient(135deg, #6366F1 0%, #4338CA 100%)",
-    shadow: "rgba(99,102,241,0.35)",
-    pulse: true,
-  },
-  {
-    label: "EVOLUTION API",
-    url: "https://evo.creation.dev.br",
-    icon: "🔌",
-    desc: "Instância Evolution API",
-    gradient: "linear-gradient(135deg, #22C55E 0%, #15803D 100%)",
-    shadow: "rgba(34,197,94,0.35)",
-    pulse: true,
-  },
-  {
-    label: "Execução Fiscal",
-    url: "https://estudantesebradi.ead.br/login",
-    icon: "⚖️",
-    desc: "Portal de execução fiscal",
-    gradient: "linear-gradient(135deg, #78716C 0%, #44403C 100%)",
-    shadow: "rgba(120,113,108,0.35)",
-    pulse: true,
-  },
-  {
-    label: "Software de Agendamento",
-    url: "https://chatatender.creation.dev.br/login/painel/login.php",
-    icon: "🗓️",
-    desc: "Sistema de agendamento",
-    gradient: "linear-gradient(135deg, #0EA5E9 0%, #1D4ED8 100%)",
-    shadow: "rgba(14,165,233,0.35)",
-    pulse: true,
-    center: true,
-  },
-  {
-    label: "Construtor de Prompts",
-    url: "https://novaeradaprogramacao.com/construtor/construtor.php",
-    icon: "🧩",
-    desc: "Construtor de prompts para IA",
-    gradient: "linear-gradient(135deg, #8B5CF6 0%, #5B21B6 100%)",
-    shadow: "rgba(139,92,246,0.35)",
-    pulse: true,
-  },
-  {
-    label: "Planilha Interativa",
-    url: "https://planilha.creation.dev.br",
-    icon: "📊",
-    desc: "Planilha interativa de gestão",
-    gradient: "linear-gradient(135deg, #06B6D4 0%, #0E7490 100%)",
-    shadow: "rgba(6,182,212,0.35)",
-    pulse: true,
-  },
 ];
 
 const links = [
@@ -229,6 +98,9 @@ const links = [
 export default function Home() {
   return (
     <>
+      <Sidebar />
+
+      <div className="page-content">
       <header>
         <div className="container header-inner">
           <div className="logo">
@@ -285,43 +157,6 @@ export default function Home() {
           </div>
 
           <p className="section-title">Acesso Rápido</p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16, marginBottom: 16 }}>
-            {featuredLinks.map((fl) => (
-              <a
-                key={fl.url}
-                href={fl.url}
-                target="_blank"
-                rel="noreferrer"
-                className={fl.pulse ? "featured-pulse" : undefined}
-                style={{
-                  display: "flex",
-                  flexDirection: fl.center ? "column" : "row",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: 20,
-                  background: fl.gradient,
-                  borderRadius: 16,
-                  padding: "24px 28px",
-                  textDecoration: "none",
-                  color: "#fff",
-                  boxShadow: `0 4px 24px ${fl.shadow}`,
-                  border: "2px solid rgba(255,255,255,0.2)",
-                  ...(fl.pulse
-                    ? ({ "--pulse-shadow": fl.shadow, "--pulse-ring": fl.shadow } as React.CSSProperties)
-                    : {}),
-                }}
-              >
-                <span style={{ fontSize: 42 }}>{fl.icon}</span>
-                <div style={fl.center ? { textAlign: "center" } : undefined}>
-                  <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 4 }}>{fl.label}</div>
-                  <div style={{ fontSize: 13, opacity: 0.9 }}>{fl.desc}</div>
-                  <div style={{ fontSize: 11, opacity: 0.75, marginTop: 4, fontFamily: "monospace", wordBreak: "break-word" }}>
-                    {fl.url.replace("https://", "")}
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
           <div className="grid" style={{ marginBottom: 40 }}>
             {links.map((l) => (
               <a className="card" href={l.url} target="_blank" rel="noreferrer" key={l.url}>
@@ -478,6 +313,7 @@ export default function Home() {
           <CopyKey label="EVOLUTION API" value="292dd9230f6a7ce50e7ed9274194dad7c17196354d637afeb3b7f0537bb9f737" />
         </div>
       </footer>
+      </div>
     </>
   );
 }
