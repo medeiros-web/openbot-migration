@@ -222,6 +222,8 @@ const links = [
   { label: "Integração Instagram", url: "https://directpro-v2.vercel.app", icon: "📸" },
   { label: "Credenciais / Campanhas", url: "https://medeirosapi.creation.dev.br", icon: "🔑" },
   { label: "Painel / Campanhas", url: "https://medeiros.creation.dev.br", icon: "📣" },
+  { label: "MAUTIC", url: "https://mautic.creation.dev.br", icon: "📧" },
+  { label: "ADV Plataforma WhatsApp", url: "https://adv.creation.dev.br", icon: "💬" },
 ];
 
 export default function Home() {
