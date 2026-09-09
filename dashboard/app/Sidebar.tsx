@@ -24,6 +24,7 @@ const featured: FeaturedItem[] = [
   { label: "Construtor de Prompts", url: "https://novaeradaprogramacao.com/construtor/construtor.php", icon: "🧩", color: "#8B5CF6" },
   { label: "Planilha Interativa", url: "https://planilha.creation.dev.br", icon: "📊", color: "#06B6D4" },
   { label: "ChatBullQ", url: "https://chatbullq.creation.dev.br/login", icon: "🐂", color: "#EF4444" },
+  { label: "Whaticket", url: "https://whaticket.creation.dev.br/", icon: "🎫", color: "#14B8A6" },
 ];
 
 export default function Sidebar() {
