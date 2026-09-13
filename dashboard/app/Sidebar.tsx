@@ -25,6 +25,7 @@ const featured: FeaturedItem[] = [
   { label: "Planilha Interativa", url: "https://planilha.creation.dev.br", icon: "📊", color: "#06B6D4" },
   { label: "ChatBullQ", url: "https://chatbullq.creation.dev.br/login", icon: "🐂", color: "#EF4444" },
   { label: "Whaticket", url: "https://whaticket.creation.dev.br/", icon: "🎫", color: "#14B8A6" },
+  { label: "Gestão Mineral", url: "https://projeto-sistema-mineral-78oj.vercel.app/login", icon: "⛏️", color: "#A16207" },
 ];
 
 export default function Sidebar() {
