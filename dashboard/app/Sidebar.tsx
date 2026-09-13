@@ -22,7 +22,7 @@ const featured: FeaturedItem[] = [
   { label: "Execução Fiscal", url: "https://estudantesebradi.ead.br/login", icon: "⚖️", color: "#78716C" },
   { label: "Software de Agendamento", url: "https://chatatender.creation.dev.br/login/painel/login.php", icon: "🗓️", color: "#0EA5E9" },
   { label: "Construtor de Prompts", url: "https://novaeradaprogramacao.com/construtor/construtor.php", icon: "🧩", color: "#8B5CF6" },
-  { label: "Planilha Interativa", url: "https://planilha.creation.dev.br", icon: "📊", color: "#06B6D4" },
+  { label: "Escritório Virtual", url: "https://planilha.creation.dev.br", icon: "📊", color: "#06B6D4" },
   { label: "ChatBullQ", url: "https://chatbullq.creation.dev.br/login", icon: "🐂", color: "#EF4444" },
   { label: "Whaticket", url: "https://whaticket.creation.dev.br/", icon: "🎫", color: "#14B8A6" },
   { label: "Gestão Mineral", url: "https://projeto-sistema-mineral-78oj.vercel.app/login", icon: "⛏️", color: "#A16207" },
