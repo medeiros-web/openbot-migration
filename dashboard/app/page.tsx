@@ -94,6 +94,7 @@ const links = [
   { label: "MAUTIC", url: "https://mautic.creation.dev.br", icon: "📧" },
   { label: "ADV Plataforma WhatsApp", url: "https://adv.creation.dev.br", icon: "💬" },
   { label: "Supabase", url: "https://supabase.atender.adv.br", icon: "🗄️" },
+  { label: "Gerador de Anúncios", url: "https://maquinadeconteudo.universotech.site/app", icon: "📢" },
 ];
 
 export default function Home() {
