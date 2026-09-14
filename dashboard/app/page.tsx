@@ -3,51 +3,6 @@ import Sidebar from "./Sidebar";
 
 export const revalidate = 0;
 
-const workflows = [
-  {
-    id: "rGrlPwGxJVkWIQ1r",
-    name: "IA Jurídica Principal",
-    desc: "Recebe mensagens do Chatwoot, verifica horário, busca histórico e responde via GROK.",
-    icon: "⚖️",
-    tag: "GROK + Histórico",
-    tagType: "success",
-    webhook: "webhook.chatatender.ia.br/openbot-ia",
-  },
-  {
-    id: "YZs1k1nQC4mjEgD7",
-    name: "Agendamento Google Calendar",
-    desc: "Verifica disponibilidade no Google Calendar, cria eventos com Google Meet e envia confirmação.",
-    icon: "📅",
-    tag: "Google Meet",
-    tagType: "warning",
-    webhook: "webhook.chatatender.ia.br/openbot-agendamento",
-  },
-  {
-    id: "aiDdNEU7UK6gkkz9",
-    name: "Follow-up Automático",
-    desc: "Verifica conversas inativas há 24h e envia mensagem personalizada gerada por IA.",
-    icon: "🔁",
-    tag: "Cron · a cada hora",
-    tagType: "",
-    webhook: "cron",
-  },
-];
-
-const config = [
-  ["Modelo IA", "x-ai/grok-2-latest (via OpenRouter)"],
-  ["Temperatura", "0.7"],
-  ["Máx. tokens", "1.000"],
-  ["Histórico de msgs", "10 mensagens"],
-  ["Delay de resposta", "10 segundos"],
-  ["Horário de atend.", "Seg–Sex: 09:00–11:00 e 14:00–16:00 (Brasília)"],
-  ["Duração da consulta", "1 hora"],
-  ["Google Meet", "Habilitado"],
-  ["Follow-up inatividade", "24 horas"],
-  ["Contas Google", "medeirosassessor.adv@gmail.com"],
-  ["Webhook Chatwoot ID", "#7 — OpenBot IA Juridica (GROK)"],
-  ["Versão backup OpenBot", "6.0.5"],
-];
-
 const links = [
   { label: "Atendimento", url: "https://atendimento-web.vercel.app", icon: "🎧" },
   { label: "Login Atend.", url: "https://wmm.chatatender.ia.br/login", icon: "🔑" },
@@ -120,44 +75,10 @@ export default function Home() {
         <section className="hero">
           <div className="container">
             <h1>Painel da IA Jurídica</h1>
-            <p>Migração OpenBot → n8n + Chatwoot · 3 workflows ativos</p>
           </div>
         </section>
 
         <div className="container">
-          <p className="section-title">Workflows n8n</p>
-          <div className="grid">
-            {workflows.map((wf) => (
-              <div className="card" key={wf.id}>
-                <div className="card-icon">{wf.icon}</div>
-                <h3>{wf.name}</h3>
-                <p>{wf.desc}</p>
-                <div className="card-footer">
-                  <span className={`tag ${wf.tagType}`}>{wf.tag}</span>
-                  <span className="status-badge active">
-                    <span className="dot" />
-                    Ativo
-                  </span>
-                </div>
-                {wf.webhook !== "cron" && (
-                  <p style={{ fontSize: 12, color: "var(--muted)", marginTop: 12, fontFamily: "monospace" }}>
-                    {wf.webhook}
-                  </p>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <p className="section-title">Configuração</p>
-          <div className="config-table">
-            {config.map(([key, val]) => (
-              <div className="config-row" key={key}>
-                <span className="config-key">{key}</span>
-                <span className="config-val">{val}</span>
-              </div>
-            ))}
-          </div>
-
           <p className="section-title">Acesso Rápido</p>
           <div className="grid" style={{ marginBottom: 40 }}>
             {links.map((l) => (
