@@ -50,6 +50,7 @@ const links = [
   { label: "ADV Plataforma WhatsApp", url: "https://adv.creation.dev.br", icon: "💬" },
   { label: "Supabase", url: "https://supabase.atender.adv.br", icon: "🗄️" },
   { label: "Gerador de Anúncios", url: "https://maquinadeconteudo.universotech.site/app", icon: "📢" },
+  { label: "Agency de Marketing", url: "https://agency.creation.dev.br", icon: "📈" },
 ];
 
 export default function Home() {
