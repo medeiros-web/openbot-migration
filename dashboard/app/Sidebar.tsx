@@ -26,6 +26,7 @@ const featured: FeaturedItem[] = [
   { label: "ChatBullQ", url: "https://chatbullq.creation.dev.br/login", icon: "🐂", color: "#EF4444" },
   { label: "Whaticket", url: "https://whaticket.creation.dev.br/", icon: "🎫", color: "#14B8A6" },
   { label: "Gestão Mineral", url: "https://projeto-sistema-mineral-78oj.vercel.app/login", icon: "⛏️", color: "#A16207" },
+  { label: "Painel Jurídico", url: "https://jus.creation.dev.br/#/painel", icon: "⚖️", color: "#4F46E5" },
 ];
 
 export default function Sidebar() {
