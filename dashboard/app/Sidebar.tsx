@@ -29,6 +29,7 @@ const featured: FeaturedItem[] = [
   { label: "Painel Jurídico", url: "https://jus.creation.dev.br/#/painel", icon: "⚖️", color: "#4F46E5" },
   { label: "Gestão Jurídica", url: "https://escritorioapi.creation.dev.br/", icon: "🏛️", color: "#0F766E" },
   { label: "Pingo IA", url: "https://pingo.atender.adv.br/login", icon: "🐧", color: "#2563EB" },
+  { label: "Plataforma Checkout", url: "https://controle.creation.dev.br/login", icon: "🛒", color: "#DB2777" },
 ];
 
 export default function Sidebar() {
