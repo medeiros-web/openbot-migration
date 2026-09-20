@@ -52,6 +52,7 @@ const links = [
   { label: "Gerador de Anúncios", url: "https://maquinadeconteudo.universotech.site/app", icon: "📢" },
   { label: "Agency de Marketing", url: "https://agency.creation.dev.br", icon: "📈" },
   { label: "ESCRITÓRIO JURÍDICO", url: "https://aiprolibrary.online/area-de-membros-juridico/#/inicio", icon: "⚖️" },
+  { label: "Pingo Atendimento", url: "https://pingo.creation.dev.br", icon: "🐧" },
 ];
 
 export default function Home() {
