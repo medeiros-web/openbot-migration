@@ -222,7 +222,7 @@ export default function Home() {
             </a>
 
             <div className="btn-group">
-              <a className="btn btn-primary" href="https://multipost.chatatender.ia.br" target="_blank">
+              <a className="btn btn-primary" href="https://multipost.chatatender.ia.br/auth/login" target="_blank">
                 💬 Abrir Multipost
               </a>
               <a className="btn btn-ghost" href="https://auto.chatatender.ia.br" target="_blank">
