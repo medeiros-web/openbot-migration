@@ -222,8 +222,8 @@ export default function Home() {
             </a>
 
             <div className="btn-group">
-              <a className="btn btn-primary" href="https://painel.chatatender.ia.br" target="_blank">
-                💬 Abrir Chatwoot
+              <a className="btn btn-primary" href="https://multipost.chatatender.ia.br" target="_blank">
+                💬 Abrir Multipost
               </a>
               <a className="btn btn-ghost" href="https://auto.chatatender.ia.br" target="_blank">
                 ⚙️ Editar Workflows
