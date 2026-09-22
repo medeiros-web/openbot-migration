@@ -53,6 +53,7 @@ const links = [
   { label: "Agency de Marketing", url: "https://agency.creation.dev.br", icon: "📈" },
   { label: "ESCRITÓRIO JURÍDICO", url: "https://aiprolibrary.online/area-de-membros-juridico/#/inicio", icon: "⚖️" },
   { label: "Pingo Atendimento", url: "https://pingo.creation.dev.br", icon: "🐧" },
+  { label: "Prospect Zplex", url: "https://prospect.atender.adv.br/auth", icon: "🔎" },
 ];
 
 export default function Home() {
