@@ -9,7 +9,7 @@ const links = [
   { label: "ChatAtender", url: "https://chatatender.vercel.app/login", icon: "💼" },
   { label: "Webhook n8n", url: "https://webhook.chatatender.ia.br/login", icon: "🔗" },
   { label: "Agente IA", url: "https://agente.chatatender.ia.br", icon: "🤖" },
-  { label: "WhaTicket", url: "https://whaticket.chatatender.ia.br", icon: "🎫" },
+  { label: "Zplex", url: "https://zplex.chatatender.ia.br/auth", icon: "🎫" },
   { label: "Administração", url: "https://fala-facil-crm.vercel.app", icon: "🛠️" },
   { label: "Site", url: "https://anm.chatatender.ia.br", icon: "🌐" },
   { label: "Cloud Connect", url: "https://cloud-connect-hub.vercel.app", icon: "☁️" },
