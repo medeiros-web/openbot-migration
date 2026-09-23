@@ -77,8 +77,18 @@ export default function Home() {
 
       <main>
         <section className="hero">
-          <div className="container">
+          <div className="container hero-header">
             <h1>Painel da IA Jurídica</h1>
+            <a
+              href="https://planilha.creation.dev.br"
+              target="_blank"
+              rel="noreferrer"
+              className="hero-featured-btn featured-pulse"
+              style={{ "--pulse-shadow": "rgba(6,182,212,0.35)", "--pulse-ring": "rgba(6,182,212,0.5)" } as React.CSSProperties}
+            >
+              <span className="hero-featured-icon">📊</span>
+              Escritório Virtual
+            </a>
           </div>
         </section>
 
