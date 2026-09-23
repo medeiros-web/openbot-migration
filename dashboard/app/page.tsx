@@ -7,7 +7,6 @@ const links = [
   { label: "Atendimento", url: "https://atendimento-web.vercel.app", icon: "🎧" },
   { label: "ChatAtender", url: "https://chatatender.vercel.app/login", icon: "💼" },
   { label: "Webhook n8n", url: "https://webhook.chatatender.ia.br/login", icon: "🔗" },
-  { label: "Agente IA", url: "https://agente.chatatender.ia.br", icon: "🤖" },
   { label: "Zplex", url: "https://zplex.chatatender.ia.br/auth", icon: "🎫" },
   { label: "Administração", url: "https://fala-facil-crm.vercel.app", icon: "🛠️" },
   { label: "Site", url: "https://anm.chatatender.ia.br", icon: "🌐" },
@@ -107,6 +106,16 @@ export default function Home() {
               >
                 <span className="hero-featured-icon">📊</span>
                 Data Prospect
+              </a>
+              <a
+                href="https://agente.chatatender.ia.br"
+                target="_blank"
+                rel="noreferrer"
+                className="hero-featured-btn featured-pulse"
+                style={{ background: "linear-gradient(135deg, #6366F1 0%, #4338CA 100%)", "--pulse-shadow": "rgba(99,102,241,0.35)", "--pulse-ring": "rgba(99,102,241,0.5)" } as React.CSSProperties}
+              >
+                <span className="hero-featured-icon">🤖</span>
+                Agente IA
               </a>
             </div>
           </div>
