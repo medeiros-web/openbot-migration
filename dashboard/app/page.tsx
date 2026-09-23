@@ -39,7 +39,6 @@ const links = [
   { label: "ERP IA", url: "https://erp.creation.dev.br/", icon: "🧮" },
   { label: "LLM Github", url: "https://ext.chatatender.ia.br/login", icon: "🐙" },
   { label: "Extensão Creation Github", url: "https://ext.chatatender.ia.br/mestres-lovable/", icon: "🧩" },
-  { label: "Data Prospect", url: "https://data.creation.dev.br/", icon: "📊" },
   { label: "BotWhatsApp", url: "https://bot.creation.dev.br", icon: "🤖" },
   { label: "Comunidade ADV IA", url: "https://comunidade.superinteligencia.org", icon: "🧠" },
   { label: "Violão/Treino", url: "https://www-ronaldomusic-com-br.lovable.app", icon: "🎸" },
@@ -99,6 +98,16 @@ export default function Home() {
               >
                 <span className="hero-featured-icon">🎓</span>
                 Mega CRM IA
+              </a>
+              <a
+                href="https://data.creation.dev.br/"
+                target="_blank"
+                rel="noreferrer"
+                className="hero-featured-btn featured-pulse"
+                style={{ background: "linear-gradient(135deg, #F59E0B 0%, #B45309 100%)", "--pulse-shadow": "rgba(245,158,11,0.35)", "--pulse-ring": "rgba(245,158,11,0.5)" } as React.CSSProperties}
+              >
+                <span className="hero-featured-icon">📊</span>
+                Data Prospect
               </a>
             </div>
           </div>
