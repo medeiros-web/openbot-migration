@@ -144,6 +144,16 @@ header {
   .hero h1 { font-size: 32px; }
 }
 
+.hero-featured-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (max-width: 479px) {
+  .hero-featured-group { width: 100%; }
+}
+
 .hero-featured-btn {
   display: inline-flex;
   align-items: center;

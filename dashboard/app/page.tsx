@@ -79,16 +79,28 @@ export default function Home() {
         <section className="hero">
           <div className="container hero-header">
             <h1>Painel da IA Jurídica</h1>
-            <a
-              href="https://planilha.creation.dev.br"
-              target="_blank"
-              rel="noreferrer"
-              className="hero-featured-btn featured-pulse"
-              style={{ "--pulse-shadow": "rgba(6,182,212,0.35)", "--pulse-ring": "rgba(6,182,212,0.5)" } as React.CSSProperties}
-            >
-              <span className="hero-featured-icon">📊</span>
-              Escritório Virtual
-            </a>
+            <div className="hero-featured-group">
+              <a
+                href="https://planilha.creation.dev.br"
+                target="_blank"
+                rel="noreferrer"
+                className="hero-featured-btn featured-pulse"
+                style={{ "--pulse-shadow": "rgba(6,182,212,0.35)", "--pulse-ring": "rgba(6,182,212,0.5)" } as React.CSSProperties}
+              >
+                <span className="hero-featured-icon">📊</span>
+                Escritório Virtual
+              </a>
+              <a
+                href="https://crm-ia-medeiros-assessoria-s-projects.vercel.app/auth/login"
+                target="_blank"
+                rel="noreferrer"
+                className="hero-featured-btn featured-pulse"
+                style={{ background: "linear-gradient(135deg, #10B981 0%, #047857 100%)", "--pulse-shadow": "rgba(16,185,129,0.35)", "--pulse-ring": "rgba(16,185,129,0.5)" } as React.CSSProperties}
+              >
+                <span className="hero-featured-icon">🎓</span>
+                Mega CRM IA
+              </a>
+            </div>
           </div>
         </section>
 

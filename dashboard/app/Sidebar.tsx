@@ -10,7 +10,6 @@ type FeaturedItem = {
 };
 
 const featured: FeaturedItem[] = [
-  { label: "Mega CRM IA", url: "https://crm-ia-medeiros-assessoria-s-projects.vercel.app/auth/login", icon: "🎓", color: "#10B981" },
   { label: "ANMlegis", url: "https://anmlegis.chatatender.ia.br", icon: "📜", color: "#F59E0B" },
   { label: "WhatsApp Havek", url: "https://whatsapp.havek.ai/login", icon: "💬", color: "#25D366" },
   { label: "Dankicode Creations", url: "https://dankicode-creations.vercel.app/", icon: "🚀", color: "#7C3AED" },
