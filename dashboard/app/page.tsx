@@ -5,7 +5,6 @@ export const revalidate = 0;
 
 const links = [
   { label: "Atendimento", url: "https://atendimento-web.vercel.app", icon: "🎧" },
-  { label: "Login Atend.", url: "https://wmm.chatatender.ia.br/login", icon: "🔑" },
   { label: "ChatAtender", url: "https://chatatender.vercel.app/login", icon: "💼" },
   { label: "Webhook n8n", url: "https://webhook.chatatender.ia.br/login", icon: "🔗" },
   { label: "Agente IA", url: "https://agente.chatatender.ia.br", icon: "🤖" },
