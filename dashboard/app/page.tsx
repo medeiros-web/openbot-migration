@@ -76,7 +76,7 @@ export default function Home() {
       <main>
         <section className="hero">
           <div className="container hero-header">
-            <h1>Painel da IA Jurídica</h1>
+            <h1>Painel da IA</h1>
             <div className="hero-featured-group">
               <a
                 href="https://planilha.creation.dev.br"
@@ -87,6 +87,16 @@ export default function Home() {
               >
                 <span className="hero-featured-icon">📊</span>
                 Escritório Virtual
+              </a>
+              <a
+                href="https://zap.chatatender.ia.br/entrar?modo=signup"
+                target="_blank"
+                rel="noreferrer"
+                className="hero-featured-btn featured-pulse"
+                style={{ background: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)", "--pulse-shadow": "rgba(37,211,102,0.35)", "--pulse-ring": "rgba(37,211,102,0.5)" } as React.CSSProperties}
+              >
+                <span className="hero-featured-icon">📱</span>
+                Zap Atendimento
               </a>
               <a
                 href="https://crm-ia-medeiros-assessoria-s-projects.vercel.app/auth/login"
