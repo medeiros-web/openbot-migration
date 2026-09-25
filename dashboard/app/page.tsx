@@ -51,6 +51,7 @@ const links = [
   { label: "ESCRITÓRIO JURÍDICO", url: "https://aiprolibrary.online/area-de-membros-juridico/#/inicio", icon: "⚖️" },
   { label: "Pingo Atendimento", url: "https://pingo.creation.dev.br", icon: "🐧" },
   { label: "Prospect Zplex", url: "https://prospect.atender.adv.br/auth", icon: "🔎" },
+  { label: "Zap Atendimento", url: "https://zap.atender.adv.br/entrar?modo=signup", icon: "📱" },
 ];
 
 export default function Home() {
