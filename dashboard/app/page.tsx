@@ -89,6 +89,16 @@ export default function Home() {
                 Escritório Virtual
               </a>
               <a
+                href="https://app.creation.dev.br"
+                target="_blank"
+                rel="noreferrer"
+                className="hero-featured-btn featured-pulse"
+                style={{ background: "linear-gradient(135deg, #EC4899 0%, #BE185D 100%)", "--pulse-shadow": "rgba(236,72,153,0.35)", "--pulse-ring": "rgba(236,72,153,0.5)" } as React.CSSProperties}
+              >
+                <span className="hero-featured-icon">🧩</span>
+                Criação APP
+              </a>
+              <a
                 href="https://zap.chatatender.ia.br/entrar?modo=signup"
                 target="_blank"
                 rel="noreferrer"
