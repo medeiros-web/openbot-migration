@@ -89,6 +89,16 @@ export default function Home() {
                 Escritório Virtual
               </a>
               <a
+                href="https://pingo.atender.adv.br/login"
+                target="_blank"
+                rel="noreferrer"
+                className="hero-featured-btn featured-pulse"
+                style={{ background: "linear-gradient(135deg, #2563EB 0%, #1E3A8A 100%)", "--pulse-shadow": "rgba(37,99,235,0.35)", "--pulse-ring": "rgba(37,99,235,0.5)" } as React.CSSProperties}
+              >
+                <span className="hero-featured-icon">🐧</span>
+                Pingo IA
+              </a>
+              <a
                 href="https://app.creation.dev.br"
                 target="_blank"
                 rel="noreferrer"
