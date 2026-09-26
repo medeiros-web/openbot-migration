@@ -286,6 +286,14 @@ export default function Home() {
               <a className="btn btn-primary" href="https://multipost.chatatender.ia.br/auth/login" target="_blank">
                 💬 Abrir Multipost
               </a>
+              <a
+                className="btn"
+                href="https://app.wiven.com.br/customer"
+                target="_blank"
+                style={{ background: "#F97316", color: "#fff" }}
+              >
+                🚀 Acelerador Postagens
+              </a>
               <a className="btn btn-ghost" href="https://auto.chatatender.ia.br" target="_blank">
                 ⚙️ Editar Workflows
               </a>
