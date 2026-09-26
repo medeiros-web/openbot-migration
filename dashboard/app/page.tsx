@@ -297,14 +297,6 @@ export default function Home() {
               <a className="btn btn-ghost" href="https://auto.chatatender.ia.br" target="_blank">
                 ⚙️ Editar Workflows
               </a>
-              <a
-                className="btn"
-                href="https://multipost.chatatender.ia.br/painel-ia"
-                target="_blank"
-                style={{ background: "#B58FCE", color: "#fff" }}
-              >
-                📝 Abrir Multitexto
-              </a>
             </div>
           </section>
         </div>
