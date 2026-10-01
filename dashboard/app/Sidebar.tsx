@@ -28,6 +28,7 @@ const featured: FeaturedItem[] = [
   { label: "Gestão Jurídica", url: "https://escritorioapi.creation.dev.br/", icon: "🏛️", color: "#0F766E" },
   { label: "Plataforma Checkout", url: "https://controle.creation.dev.br/login", icon: "🛒", color: "#DB2777" },
   { label: "Chat_Atender", url: "https://chat.creation.dev.br/painel", icon: "💬", color: "#0891B2" },
+  { label: "CRM Atender", url: "https://crm.atender.adv.br/login", icon: "👥", color: "#7C3AED" },
 ];
 
 export default function Sidebar() {
