@@ -79,6 +79,16 @@ export default function Home() {
             <h1>Painel da IA</h1>
             <div className="hero-featured-group">
               <a
+                href="https://chatatender.creation.dev.br/login/painel/login.php"
+                target="_blank"
+                rel="noreferrer"
+                className="hero-featured-btn featured-pulse"
+                style={{ background: "linear-gradient(135deg, #0EA5E9 0%, #1D4ED8 100%)", "--pulse-shadow": "rgba(14,165,233,0.35)", "--pulse-ring": "rgba(14,165,233,0.5)" } as React.CSSProperties}
+              >
+                <span className="hero-featured-icon">🗓️</span>
+                Software de Agendamento
+              </a>
+              <a
                 href="https://planilha.creation.dev.br"
                 target="_blank"
                 rel="noreferrer"

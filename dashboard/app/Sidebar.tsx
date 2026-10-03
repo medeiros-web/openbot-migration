@@ -19,7 +19,6 @@ const featured: FeaturedItem[] = [
   { label: "Roteador LLMs", url: "https://llm.creation.dev.br", icon: "🧭", color: "#6366F1" },
   { label: "EVOLUTION API", url: "https://evo.creation.dev.br", icon: "🔌", color: "#22C55E" },
   { label: "Execução Fiscal", url: "https://estudantesebradi.ead.br/login", icon: "⚖️", color: "#78716C" },
-  { label: "Software de Agendamento", url: "https://chatatender.creation.dev.br/login/painel/login.php", icon: "🗓️", color: "#0EA5E9" },
   { label: "Construtor de Prompts", url: "https://novaeradaprogramacao.com/construtor/construtor.php", icon: "🧩", color: "#8B5CF6" },
   { label: "ChatBullQ", url: "https://chatbullq.creation.dev.br/login", icon: "🐂", color: "#EF4444" },
   { label: "Whaticket", url: "https://whaticket.creation.dev.br/", icon: "🎫", color: "#14B8A6" },
@@ -29,6 +28,7 @@ const featured: FeaturedItem[] = [
   { label: "Plataforma Checkout", url: "https://controle.creation.dev.br/login", icon: "🛒", color: "#DB2777" },
   { label: "Chat_Atender", url: "https://chat.creation.dev.br/painel", icon: "💬", color: "#0891B2" },
   { label: "CRM Atender", url: "https://crm.atender.adv.br/login", icon: "👥", color: "#7C3AED" },
+  { label: "Site Agenda", url: "https://causidico.atender.adv.br", icon: "📅", color: "#0EA5E9" },
 ];
 
 export default function Sidebar() {
