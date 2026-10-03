@@ -205,8 +205,10 @@ export default function Home() {
           </div>
 
           <section className="cta-section">
-            <h2>Precisa de ajuda?</h2>
-            <p>Acesse o Chatwoot para gerenciar conversas ou o n8n para editar workflows.</p>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 14, marginBottom: 24, flexWrap: "wrap" }}>
+              <span style={{ fontSize: 44, lineHeight: 1 }}>💎</span>
+              <h2 style={{ marginBottom: 0 }}>Um Diamante dura para sempre</h2>
+            </div>
 
             <a
               href="https://adv.chatatender.ia.br"
