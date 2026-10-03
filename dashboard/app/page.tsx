@@ -79,6 +79,16 @@ export default function Home() {
             <h1>Painel da IA</h1>
             <div className="hero-featured-group">
               <a
+                href="https://painel.chatatender.ia.br/app/login"
+                target="_blank"
+                rel="noreferrer"
+                className="hero-featured-btn featured-pulse"
+                style={{ background: "linear-gradient(135deg, #25D366 0%, #075E54 100%)", "--pulse-shadow": "rgba(37,211,102,0.35)", "--pulse-ring": "rgba(37,211,102,0.5)" } as React.CSSProperties}
+              >
+                <span className="hero-featured-icon">💬</span>
+                Chatwoot
+              </a>
+              <a
                 href="https://chat.creation.dev.br/painel"
                 target="_blank"
                 rel="noreferrer"
