@@ -26,7 +26,6 @@ const featured: FeaturedItem[] = [
   { label: "Painel Jurídico", url: "https://jus.creation.dev.br/#/painel", icon: "⚖️", color: "#4F46E5" },
   { label: "Gestão Jurídica", url: "https://escritorioapi.creation.dev.br/", icon: "🏛️", color: "#0F766E" },
   { label: "Plataforma Checkout", url: "https://controle.creation.dev.br/login", icon: "🛒", color: "#DB2777" },
-  { label: "Chat_Atender", url: "https://chat.creation.dev.br/painel", icon: "💬", color: "#0891B2" },
   { label: "CRM Atender", url: "https://crm.atender.adv.br/login", icon: "👥", color: "#7C3AED" },
   { label: "Site Agenda", url: "https://causidico.atender.adv.br", icon: "📅", color: "#0EA5E9" },
 ];

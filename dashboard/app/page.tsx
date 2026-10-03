@@ -79,6 +79,16 @@ export default function Home() {
             <h1>Painel da IA</h1>
             <div className="hero-featured-group">
               <a
+                href="https://chat.creation.dev.br/painel"
+                target="_blank"
+                rel="noreferrer"
+                className="hero-featured-btn featured-pulse"
+                style={{ background: "linear-gradient(135deg, #0891B2 0%, #0E7490 100%)", "--pulse-shadow": "rgba(8,145,178,0.35)", "--pulse-ring": "rgba(8,145,178,0.5)" } as React.CSSProperties}
+              >
+                <span className="hero-featured-icon">💬</span>
+                Chat_Atender
+              </a>
+              <a
                 href="https://chatatender.creation.dev.br/login/painel/login.php"
                 target="_blank"
                 rel="noreferrer"
