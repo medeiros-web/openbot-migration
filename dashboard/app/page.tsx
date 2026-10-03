@@ -206,7 +206,14 @@ export default function Home() {
 
           <section className="cta-section">
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 14, marginBottom: 24, flexWrap: "wrap" }}>
-              <span style={{ fontSize: 44, lineHeight: 1 }}>💎</span>
+              <a
+                href="https://anm.chatatender.ia.br"
+                target="_blank"
+                rel="noreferrer"
+                style={{ fontSize: 44, lineHeight: 1 }}
+              >
+                💎
+              </a>
               <h2 style={{ marginBottom: 0 }}>Um Diamante dura para sempre</h2>
             </div>
 
