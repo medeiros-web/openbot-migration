@@ -79,6 +79,16 @@ export default function Home() {
             <h1>Painel da IA</h1>
             <div className="hero-featured-group">
               <a
+                href="https://agents.chatatender.ia.br/login"
+                target="_blank"
+                rel="noreferrer"
+                className="hero-featured-btn featured-pulse"
+                style={{ background: "linear-gradient(135deg, #4338CA 0%, #312E81 100%)", "--pulse-shadow": "rgba(67,56,202,0.35)", "--pulse-ring": "rgba(67,56,202,0.5)" } as React.CSSProperties}
+              >
+                <span className="hero-featured-icon">🤝</span>
+                Agents IA / integração ao Chatwoot
+              </a>
+              <a
                 href="https://painel.chatatender.ia.br/app/login"
                 target="_blank"
                 rel="noreferrer"
