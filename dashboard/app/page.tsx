@@ -79,6 +79,16 @@ export default function Home() {
             <h1>Painel da IA</h1>
             <div className="hero-featured-group">
               <a
+                href="https://agente.atender.adv.br/login.php"
+                target="_blank"
+                rel="noreferrer"
+                className="hero-featured-btn featured-pulse"
+                style={{ background: "linear-gradient(135deg, #DC2626 0%, #7F1D1D 100%)", "--pulse-shadow": "rgba(220,38,38,0.35)", "--pulse-ring": "rgba(220,38,38,0.5)" } as React.CSSProperties}
+              >
+                <span className="hero-featured-icon">🦸</span>
+                Super Agente
+              </a>
+              <a
                 href="https://agents.chatatender.ia.br/login"
                 target="_blank"
                 rel="noreferrer"
