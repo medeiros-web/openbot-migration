@@ -28,6 +28,7 @@ const featured: FeaturedItem[] = [
   { label: "Plataforma Checkout", url: "https://controle.creation.dev.br/login", icon: "🛒", color: "#DB2777" },
   { label: "CRM Atender", url: "https://crm.atender.adv.br/login", icon: "👥", color: "#7C3AED" },
   { label: "Site Agenda", url: "https://causidico.atender.adv.br", icon: "📅", color: "#0EA5E9" },
+  { label: "Super IA", url: "https://agente.creation.dev.br/login.php", icon: "🧠", color: "#9333EA" },
 ];
 
 export default function Sidebar() {
