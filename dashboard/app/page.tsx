@@ -54,6 +54,12 @@ const links = [
   { label: "Zap Atendimento", url: "https://zap.atender.adv.br/entrar?modo=signup", icon: "📱" },
 ];
 
+const prospeccao = [
+  { label: "Painel Prospect Admin", url: "https://extratorapi.chatatender.ia.br", icon: "🛠️" },
+  { label: "Painel Prospect Leads", url: "https://extrator.chatatender.ia.br", icon: "🔎" },
+  { label: "Instalador Prospect", url: "https://extratorapi.chatatender.ia.br/onboarding/", icon: "📦" },
+];
+
 export default function Home() {
   return (
     <>
@@ -213,6 +219,17 @@ export default function Home() {
         </section>
 
         <div className="container">
+          <p className="section-title">Prospecção</p>
+          <div className="grid" style={{ marginBottom: 40 }}>
+            {prospeccao.map((l) => (
+              <a className="card" href={l.url} target="_blank" rel="noreferrer" key={l.url}>
+                <div className="card-icon">{l.icon}</div>
+                <h3>{l.label}</h3>
+                <p style={{ fontSize: 13 }}>{l.url.replace("https://", "")}</p>
+              </a>
+            ))}
+          </div>
+
           <p className="section-title">Acesso Rápido</p>
           <div className="grid" style={{ marginBottom: 40 }}>
             {links.map((l) => (
