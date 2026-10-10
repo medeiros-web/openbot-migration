@@ -14,8 +14,6 @@ const featured: FeaturedItem[] = [
   { label: "WhatsApp Havek", url: "https://whatsapp.havek.ai/login", icon: "💬", color: "#25D366" },
   { label: "Dankicode Creations", url: "https://dankicode-creations.vercel.app/", icon: "🚀", color: "#7C3AED" },
   { label: "Site DIVULGAÇÃO", url: "https://tecnologia.chatatender.ia.br/", icon: "📢", color: "#F43F5E" },
-  { label: "DIVULGAÇÃO", url: "https://marketing-ten-tawny.vercel.app/admin", icon: "📣", color: "#0EA5E9" },
-  { label: "Direct Instagram", url: "https://many-main-henna.vercel.app/", icon: "📸", color: "#C026D3" },
   { label: "EVOLUTION API", url: "https://evo.creation.dev.br", icon: "🔌", color: "#22C55E" },
   { label: "Execução Fiscal", url: "https://estudantesebradi.ead.br/login", icon: "⚖️", color: "#78716C" },
   { label: "Construtor de Prompts", url: "https://novaeradaprogramacao.com/construtor/construtor.php", icon: "🧩", color: "#8B5CF6" },

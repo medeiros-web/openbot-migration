@@ -59,6 +59,8 @@ const prospeccao = [
   { label: "Painel Prospect Leads", url: "https://extrator.chatatender.ia.br", icon: "🔎" },
   { label: "Instalador Prospect", url: "https://extratorapi.chatatender.ia.br/onboarding/", icon: "📦" },
   { label: "Google Sheet/Prospect", url: "https://googlesheet.chatatender.ia.br", icon: "📊" },
+  { label: "DIVULGAÇÃO", url: "https://marketing-ten-tawny.vercel.app/admin", icon: "📣" },
+  { label: "Direct Instagram", url: "https://many-main-henna.vercel.app/", icon: "📸" },
 ];
 
 export default function Home() {
