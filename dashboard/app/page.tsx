@@ -58,6 +58,7 @@ const prospeccao = [
   { label: "Painel Prospect Admin", url: "https://extratorapi.chatatender.ia.br", icon: "🛠️" },
   { label: "Painel Prospect Leads", url: "https://extrator.chatatender.ia.br", icon: "🔎" },
   { label: "Instalador Prospect", url: "https://extratorapi.chatatender.ia.br/onboarding/", icon: "📦" },
+  { label: "Google Sheet/Prospect", url: "https://googlesheet.chatatender.ia.br", icon: "📊" },
 ];
 
 export default function Home() {
