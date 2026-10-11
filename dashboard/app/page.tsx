@@ -61,6 +61,8 @@ const prospeccao = [
   { label: "Google Sheet/Prospect", url: "https://googlesheet.chatatender.ia.br", icon: "📊" },
   { label: "DIVULGAÇÃO", url: "https://marketing-ten-tawny.vercel.app/admin", icon: "📣" },
   { label: "Direct Instagram", url: "https://many-main-henna.vercel.app/", icon: "📸" },
+  { label: "Abrir Multipost", url: "https://multipost.chatatender.ia.br/auth/login", icon: "💬" },
+  { label: "Acelerador Postagens", url: "https://app.wiven.com.br/customer", icon: "🚀" },
 ];
 
 export default function Home() {
@@ -382,17 +384,6 @@ export default function Home() {
             </a>
 
             <div className="btn-group">
-              <a className="btn btn-primary" href="https://multipost.chatatender.ia.br/auth/login" target="_blank">
-                💬 Abrir Multipost
-              </a>
-              <a
-                className="btn"
-                href="https://app.wiven.com.br/customer"
-                target="_blank"
-                style={{ background: "#F97316", color: "#fff" }}
-              >
-                🚀 Acelerador Postagens
-              </a>
               <a className="btn btn-ghost" href="https://auto.chatatender.ia.br" target="_blank">
                 ⚙️ Editar Workflows
               </a>
