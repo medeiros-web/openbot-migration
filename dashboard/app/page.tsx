@@ -63,6 +63,7 @@ const prospeccao = [
   { label: "Direct Instagram", url: "https://many-main-henna.vercel.app/", icon: "📸" },
   { label: "Abrir Multipost", url: "https://multipost.chatatender.ia.br/auth/login", icon: "💬" },
   { label: "Acelerador Postagens", url: "https://app.wiven.com.br/customer", icon: "🚀" },
+  { label: "Data Prospect", url: "https://data.creation.dev.br/", icon: "📊" },
 ];
 
 export default function Home() {
@@ -198,16 +199,6 @@ export default function Home() {
               >
                 <span className="hero-featured-icon">🎓</span>
                 Mega CRM IA
-              </a>
-              <a
-                href="https://data.creation.dev.br/"
-                target="_blank"
-                rel="noreferrer"
-                className="hero-featured-btn featured-pulse"
-                style={{ background: "linear-gradient(135deg, #F59E0B 0%, #B45309 100%)", "--pulse-shadow": "rgba(245,158,11,0.35)", "--pulse-ring": "rgba(245,158,11,0.5)" } as React.CSSProperties}
-              >
-                <span className="hero-featured-icon">📊</span>
-                Data Prospect
               </a>
               <a
                 href="https://agente.chatatender.ia.br"
