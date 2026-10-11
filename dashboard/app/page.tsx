@@ -141,6 +141,16 @@ export default function Home() {
                 Chat_Atender
               </a>
               <a
+                href="https://agente.chatatender.ia.br"
+                target="_blank"
+                rel="noreferrer"
+                className="hero-featured-btn featured-pulse"
+                style={{ background: "linear-gradient(135deg, #6366F1 0%, #4338CA 100%)", "--pulse-shadow": "rgba(99,102,241,0.35)", "--pulse-ring": "rgba(99,102,241,0.5)" } as React.CSSProperties}
+              >
+                <span className="hero-featured-icon">🤖</span>
+                Agente IA
+              </a>
+              <a
                 href="https://chatatender.creation.dev.br/login/painel/login.php"
                 target="_blank"
                 rel="noreferrer"
@@ -199,16 +209,6 @@ export default function Home() {
               >
                 <span className="hero-featured-icon">🎓</span>
                 Mega CRM IA
-              </a>
-              <a
-                href="https://agente.chatatender.ia.br"
-                target="_blank"
-                rel="noreferrer"
-                className="hero-featured-btn featured-pulse"
-                style={{ background: "linear-gradient(135deg, #6366F1 0%, #4338CA 100%)", "--pulse-shadow": "rgba(99,102,241,0.35)", "--pulse-ring": "rgba(99,102,241,0.5)" } as React.CSSProperties}
-              >
-                <span className="hero-featured-icon">🤖</span>
-                Agente IA
               </a>
             </div>
           </div>
