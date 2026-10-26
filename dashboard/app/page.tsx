@@ -91,6 +91,26 @@ export default function Home() {
             <h1>Painel da IA</h1>
             <div className="hero-featured-group">
               <a
+                href="https://painel.creation.dev.br"
+                target="_blank"
+                rel="noreferrer"
+                className="hero-featured-btn featured-pulse"
+                style={{ background: "linear-gradient(135deg, #14B8A6 0%, #0F766E 100%)", "--pulse-shadow": "rgba(20,184,166,0.35)", "--pulse-ring": "rgba(20,184,166,0.5)" } as React.CSSProperties}
+              >
+                <span className="hero-featured-icon">🗨️</span>
+                Whabla IA
+              </a>
+              <a
+                href="https://agents.creation.dev.br"
+                target="_blank"
+                rel="noreferrer"
+                className="hero-featured-btn featured-pulse"
+                style={{ background: "linear-gradient(135deg, #7C3AED 0%, #4C1D95 100%)", "--pulse-shadow": "rgba(124,58,237,0.35)", "--pulse-ring": "rgba(124,58,237,0.5)" } as React.CSSProperties}
+              >
+                <span className="hero-featured-icon">🧠</span>
+                Núcleo IA
+              </a>
+              <a
                 href="https://superagente.chatatender.ia.br/#login"
                 target="_blank"
                 rel="noreferrer"
