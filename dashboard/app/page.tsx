@@ -15,7 +15,6 @@ const links = [
   { label: "Sonic Bloom", url: "https://sonic-bloom-vault.vercel.app", icon: "🎵" },
   { label: "Processos", url: "https://processo-demanda.vercel.app", icon: "⚖️" },
   { label: "Doc Archive", url: "https://digital-document-archive-q22v.vercel.app", icon: "📁" },
-  { label: "Plataforma Jurídica", url: "https://legal-ai-assistant-one.vercel.app/", icon: "⚖️" },
   { label: "Plataforma Agentes IA", url: "https://bot.chatatender.ia.br", icon: "💬" },
   { label: "Plataforma Marketing IA", url: "https://marketing-ten-tawny.vercel.app/admin", icon: "⚙️" },
   { label: "Portainer", url: "https://portainer.chatatender.ia.br", icon: "🐳" },
