@@ -1,4 +1,4 @@
-const CACHE = 'painel-ia-v1';
+const CACHE = 'painel-ia-v2';
 const PRECACHE = ['/', '/manifest.webmanifest'];
 
 self.addEventListener('install', (e) => {
