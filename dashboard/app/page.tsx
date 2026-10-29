@@ -90,6 +90,16 @@ export default function Home() {
             <h1>Painel da IA</h1>
             <div className="hero-featured-group">
               <a
+                href="https://sfi-anm.vercel.app/"
+                target="_blank"
+                rel="noreferrer"
+                className="hero-featured-btn featured-pulse"
+                style={{ background: "linear-gradient(135deg, #A16207 0%, #713F12 100%)", "--pulse-shadow": "rgba(161,98,7,0.35)", "--pulse-ring": "rgba(161,98,7,0.5)" } as React.CSSProperties}
+              >
+                <span className="hero-featured-icon">⛏️</span>
+                Dashboard SFI
+              </a>
+              <a
                 href="https://painel.creation.dev.br"
                 target="_blank"
                 rel="noreferrer"
